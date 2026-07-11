@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none">
+  <!-- Persian Cat - Fluffy, flat face, sitting -->
+  <defs><linearGradient id="pc1" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#D71F84"/><stop offset="100%" stop-color="#6F2282"/></linearGradient></defs>
+  <!-- Body -->
+  <ellipse cx="100" cy="140" rx="55" ry="45" fill="#F0E6F6"/>
+  <ellipse cx="100" cy="140" rx="50" ry="42" fill="#E8D8F0"/>
+  <!-- Fluffy chest -->
+  <ellipse cx="100" cy="115" rx="35" ry="25" fill="#F5EEF8"/>
+  <!-- Head -->
+  <circle cx="100" cy="80" r="35" fill="#F0E6F6"/>
+  <!-- Flat face (Persian characteristic) -->
+  <ellipse cx="100" cy="85" rx="25" ry="20" fill="#F5EEF8"/>
+  <!-- Ears -->
+  <path d="M72 55 L65 30 L85 50Z" fill="#E8D8F0" stroke="#D7A0C0" stroke-width="1"/>
+  <path d="M128 55 L135 30 L115 50Z" fill="#E8D8F0" stroke="#D7A0C0" stroke-width="1"/>
+  <path d="M74 53 L68 35 L83 51Z" fill="#F0C8E0"/>
+  <path d="M126 53 L132 35 L117 51Z" fill="#F0C8E0"/>
+  <!-- Eyes (big round Persian eyes) -->
+  <circle cx="87" cy="75" r="8" fill="white"/>
+  <circle cx="113" cy="75" r="8" fill="white"/>
+  <circle cx="88" cy="75" r="5" fill="#333"/>
+  <circle cx="114" cy="75" r="5" fill="#333"/>
+  <circle cx="90" cy="73" r="2" fill="white"/>
+  <circle cx="116" cy="73" r="2" fill="white"/>
+  <!-- Flat nose -->
+  <ellipse cx="100" cy="87" rx="5" ry="3" fill="#D7A0C0"/>
+  <!-- Mouth -->
+  <path d="M95 91 Q100 96 105 91" stroke="#C08090" stroke-width="1.5" fill="none"/>
+  <!-- Whiskers -->
+  <line x1="65" y1="83" x2="82" y2="86" stroke="#D0C0D0" stroke-width="1"/>
+  <line x1="63" y1="88" x2="81" y2="89" stroke="#D0C0D0" stroke-width="1"/>
+  <line x1="118" y1="86" x2="135" y2="83" stroke="#D0C0D0" stroke-width="1"/>
+  <line x1="119" y1="89" x2="137" y2="88" stroke="#D0C0C0" stroke-width="1"/>
+  <!-- Fluffy tail -->
+  <path d="M150 145 Q170 130 165 110 Q162 100 155 105 Q150 115 148 130" fill="#E8D8F0" stroke="#D7A0C0" stroke-width="1"/>
+  <!-- Front paws -->
+  <ellipse cx="80" cy="178" rx="12" ry="8" fill="#F0E6F6"/>
+  <ellipse cx="120" cy="178" rx="12" ry="8" fill="#F0E6F6"/>
+  <!-- Paw details -->
+  <circle cx="76" cy="177" r="3" fill="#F5EEF8"/>
+  <circle cx="80" cy="175" r="3" fill="#F5EEF8"/>
+  <circle cx="84" cy="177" r="3" fill="#F5EEF8"/>
+  <circle cx="116" cy="177" r="3" fill="#F5EEF8"/>
+  <circle cx="120" cy="175" r="3" fill="#F5EEF8"/>
+  <circle cx="124" cy="177" r="3" fill="#F5EEF8"/>
+</svg>

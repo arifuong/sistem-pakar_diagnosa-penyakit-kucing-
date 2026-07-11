@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 180" fill="none">
+  <!-- Cat sitting with clipboard -->
+  <!-- Clipboard -->
+  <rect x="95" y="45" width="45" height="58" rx="4" fill="#F5F0E0" stroke="#C8B090" stroke-width="2"/>
+  <rect x="108" y="42" width="20" height="8" rx="3" fill="#C8B090"/>
+  <line x1="103" y1="62" x2="132" y2="62" stroke="#D71F84" stroke-width="2"/>
+  <line x1="103" y1="70" x2="128" y2="70" stroke="#DDD" stroke-width="2"/>
+  <line x1="103" y1="78" x2="130" y2="78" stroke="#DDD" stroke-width="2"/>
+  <line x1="103" y1="86" x2="125" y2="86" stroke="#DDD" stroke-width="2"/>
+  <circle cx="103" cy="62" r="2" fill="#27AE60"/>
+  <circle cx="103" cy="70" r="2" fill="#F39C12"/>
+  <circle cx="103" cy="78" r="2" fill="#27AE60"/>
+  <!-- Cat body -->
+  <ellipse cx="70" cy="130" rx="40" ry="38" fill="#F0E6F6"/>
+  <ellipse cx="70" cy="130" rx="36" ry="35" fill="#E8D8F0"/>
+  <!-- Cat head -->
+  <circle cx="70" cy="80" r="28" fill="#F0E6F6"/>
+  <!-- Ears -->
+  <path d="M48 58 L42 32 L58 52Z" fill="#F0E6F6"/>
+  <path d="M92 58 L98 32 L82 52Z" fill="#F0E6F6"/>
+  <path d="M50 56 L45 38 L56 52Z" fill="#F0C8E0"/>
+  <path d="M90 56 L95 38 L84 52Z" fill="#F0C8E0"/>
+  <!-- Eyes -->
+  <circle cx="60" cy="76" r="5" fill="white"/>
+  <circle cx="80" cy="76" r="5" fill="white"/>
+  <circle cx="61" cy="76" r="3" fill="#333"/>
+  <circle cx="81" cy="76" r="3" fill="#333"/>
+  <circle cx="62.5" cy="74.5" r="1.2" fill="white"/>
+  <circle cx="82.5" cy="74.5" r="1.2" fill="white"/>
+  <!-- Nose -->
+  <ellipse cx="70" cy="84" rx="3.5" ry="2.5" fill="#D7A0C0"/>
+  <!-- Mouth -->
+  <path d="M66 88 Q70 92 74 88" stroke="#C08090" stroke-width="1.5" fill="none"/>
+  <!-- Whiskers -->
+  <line x1="40" y1="82" x2="55" y2="84" stroke="#D0C0D0" stroke-width="1"/>
+  <line x1="38" y1="88" x2="54" y2="88" stroke="#D0C0D0" stroke-width="1"/>
+  <line x1="85" y1="84" x2="100" y2="82" stroke="#D0C0D0" stroke-width="1"/>
+  <line x1="86" y1="88" x2="102" y2="88" stroke="#D0C0D0" stroke-width="1"/>
+  <!-- Paw holding clipboard -->
+  <ellipse cx="95" cy="105" rx="10" ry="7" fill="#F0E6F6"/>
+  <!-- Front paws -->
+  <ellipse cx="52" cy="165" rx="10" ry="7" fill="#F0E6F6"/>
+  <ellipse cx="88" cy="165" rx="10" ry="7" fill="#F0E6F6"/>
+  <!-- Tail -->
+  <path d="M108 130 Q125 115 120 95 Q118 88 115 92 Q112 105 106 120" fill="#E8D8F0"/>
+</svg>

@@ -1,0 +1,206 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" fill="none">
+  <defs>
+    <linearGradient id="bg1" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#F8F4F0"/>
+      <stop offset="100%" stop-color="#EDE4DA"/>
+    </linearGradient>
+    <linearGradient id="coat" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="100%" stop-color="#F0F4F8"/>
+    </linearGradient>
+    <linearGradient id="persian" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#F5EDE8"/>
+      <stop offset="100%" stop-color="#E8DCD4"/>
+    </linearGradient>
+    <linearGradient id="coone" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#D4B896"/>
+      <stop offset="100%" stop-color="#C4A882"/>
+    </linearGradient>
+    <clipPath id="clip1"><rect width="600" height="400" rx="20"/></clipPath>
+  </defs>
+  <g clip-path="url(#clip1)">
+    <!-- Background -->
+    <rect width="600" height="400" fill="url(#bg1)"/>
+    <!-- Subtle paw pattern -->
+    <g opacity="0.03">
+      <path d="M50 50c3 0 5 4 5 9s-2 9-5 9-5-4-5-9 2-9 5-9zm-10 15c-2 0-3.5-3-3.5-7s1.5-7 3.5-7 3.5 3 3.5 7-1.5 7-3.5 7zm20 0c-2 0-3.5-3-3.5-7s1.5-7 3.5-7 3.5 3 3.5 7-1.5 7-3.5 7z" fill="#D71F84"/>
+      <path d="M150 100c3 0 5 4 5 9s-2 9-5 9-5-4-5-9 2-9 5-9zm-10 15c-2 0-3.5-3-3.5-7s1.5-7 3.5-7 3.5 3 3.5 7-1.5 7-3.5 7zm20 0c-2 0-3.5-3-3.5-7s1.5-7 3.5-7 3.5 3 3.5 7-1.5 7-3.5 7z" fill="#D71F84"/>
+      <path d="M450 60c3 0 5 4 5 9s-2 9-5 9-5-4-5-9 2-9 5-9zm-10 15c-2 0-3.5-3-3.5-7s1.5-7 3.5-7 3.5 3 3.5 7-1.5 7-3.5 7zm20 0c-2 0-3.5-3-3.5-7s1.5-7 3.5-7 3.5 3 3.5 7-1.5 7-3.5 7z" fill="#D71F84"/>
+      <path d="M520 180c3 0 5 4 5 9s-2 9-5 9-5-4-5-9 2-9 5-9zm-10 15c-2 0-3.5-3-3.5-7s1.5-7 3.5-7 3.5 3 3.5 7-1.5 7-3.5 7zm20 0c-2 0-3.5-3-3.5-7s1.5-7 3.5-7 3.5 3 3.5 7-1.5 7-3.5 7z" fill="#D71F84"/>
+    </g>
+    <!-- Exam table -->
+    <rect x="80" y="300" width="440" height="12" rx="6" fill="#B8C4CC"/>
+    <rect x="100" y="312" width="8" height="60" rx="3" fill="#9AA8B2"/>
+    <rect x="492" y="312" width="8" height="60" rx="3" fill="#9AA8B2"/>
+    <!-- Stethoscope on table -->
+    <path d="M420 298 Q415 285 420 275 Q425 265 435 270" stroke="#555" stroke-width="3" fill="none"/>
+    <circle cx="435" cy="273" r="8" fill="#777" stroke="#555" stroke-width="2"/>
+    <circle cx="435" cy="273" r="4" fill="#999"/>
+    <!-- Medicine bottles -->
+    <rect x="380" y="280" width="18" height="24" rx="4" fill="#D71F84" opacity="0.85"/>
+    <rect x="378" y="276" width="22" height="6" rx="2" fill="#C01A76"/>
+    <circle cx="389" cy="270" r="3" fill="#D71F84" opacity="0.5"/>
+    <rect x="445" y="283" width="15" height="21" rx="3" fill="#27AE60" opacity="0.85"/>
+    <rect x="443" y="279" width="19" height="6" rx="2" fill="#1E8449"/>
+    <rect x="468" y="281" width="16" height="23" rx="3" fill="#7BBAC1" opacity="0.85"/>
+    <rect x="466" y="277" width="20" height="6" rx="2" fill="#5A9EA3"/>
+    <!-- Clipboard on wall -->
+    <rect x="480" y="60" width="70" height="90" rx="6" fill="#F5F0E8" stroke="#C8B8A0" stroke-width="2"/>
+    <rect x="500" y="55" width="30" height="10" rx="4" fill="#C8B8A0"/>
+    <line x1="492" y1="85" x2="538" y2="85" stroke="#D71F84" stroke-width="2.5"/>
+    <line x1="492" y1="95" x2="530" y2="95" stroke="#DDD" stroke-width="2"/>
+    <line x1="492" y1="105" x2="535" y2="105" stroke="#DDD" stroke-width="2"/>
+    <line x1="492" y1="115" x2="525" y2="115" stroke="#DDD" stroke-width="2"/>
+    <line x1="492" y1="125" x2="528" y2="125" stroke="#DDD" stroke-width="2"/>
+    <circle cx="489" cy="85" r="3.5" fill="#27AE60"/>
+    <circle cx="489" cy="95" r="3.5" fill="#F39C12"/>
+    <circle cx="489" cy="105" r="3.5" fill="#27AE60"/>
+    <circle cx="489" cy="115" r="3.5" fill="#27AE60"/>
+    <!-- Heart rate monitor -->
+    <rect x="60" y="50" width="120" height="80" rx="10" fill="#2D3748"/>
+    <rect x="68" y="58" width="104" height="55" rx="6" fill="#1A202C"/>
+    <polyline points="68,85 82,85 88,70 94,95 100,75 106,85 120,85 126,70 132,90 138,80 144,85 172,85" stroke="#48BB78" stroke-width="2" fill="none"/>
+    <circle cx="110" cy="108" r="4" fill="#48BB78"/>
+    <text x="70" y="135" font-family="Poppins,sans-serif" font-size="10" fill="#48BB78" opacity="0.7">HEART RATE</text>
+    <!-- === VETERINARIAN === -->
+    <!-- Body / Lab coat -->
+    <path d="M260 160 L248 300 L352 300 L340 160Z" fill="url(#coat)" stroke="#E2E8F0" stroke-width="1"/>
+    <!-- Lab coat collar -->
+    <path d="M275 160 L282 185 L318 185 L325 160" fill="white" stroke="#E2E8F0" stroke-width="1"/>
+    <!-- Coat pockets -->
+    <rect x="262" y="220" width="30" height="3" rx="1.5" fill="#E2E8F0"/>
+    <rect x="348" y="220" width="30" height="3" rx="1.5" fill="#E2E8F0"/>
+    <!-- Buttons -->
+    <circle cx="300" cy="198" r="3" fill="#D71F84"/>
+    <circle cx="300" cy="215" r="3" fill="#D71F84"/>
+    <circle cx="300" cy="232" r="3" fill="#D71F84"/>
+    <!-- ID Badge -->
+    <rect x="328" y="175" width="22" height="28" rx="3" fill="#F7FAFC" stroke="#E2E8F0" stroke-width="1"/>
+    <rect x="333" y="180" width="12" height="10" rx="2" fill="#E2E8F0"/>
+    <line x1="333" y1="195" x2="345" y2="195" stroke="#CBD5E0" stroke-width="1"/>
+    <line x1="335" y1="198" x2="343" y2="198" stroke="#CBD5E0" stroke-width="1"/>
+    <!-- Head -->
+    <circle cx="300" cy="128" r="38" fill="#E8B89A"/>
+    <!-- Hair -->
+    <path d="M262 120 Q268 68 300 72 Q332 68 338 120" fill="#3D2B1F"/>
+    <path d="M260 122 Q254 95 268 78" fill="#3D2B1F"/>
+    <path d="M340 122 Q346 95 332 78" fill="#3D2B1F"/>
+    <!-- Hair bun -->
+    <ellipse cx="300" cy="70" rx="20" ry="14" fill="#3D2B1F"/>
+    <!-- Face -->
+    <ellipse cx="286" cy="125" rx="5.5" ry="6" fill="white"/>
+    <ellipse cx="314" cy="125" rx="5.5" ry="6" fill="white"/>
+    <circle cx="287" cy="125" r="3.5" fill="#4A3728"/>
+    <circle cx="315" cy="125" r="3.5" fill="#4A3728"/>
+    <circle cx="288.5" cy="123.5" r="1.5" fill="white"/>
+    <circle cx="316.5" cy="123.5" r="1.5" fill="white"/>
+    <!-- Eyebrows -->
+    <path d="M278 116 Q284 113 292 115" stroke="#3D2B1F" stroke-width="2" fill="none" stroke-linecap="round"/>
+    <path d="M308 115 Q316 113 322 116" stroke="#3D2B1F" stroke-width="2" fill="none" stroke-linecap="round"/>
+    <!-- Nose -->
+    <path d="M296 134 L300 138 L304 134Z" fill="#D4856A"/>
+    <!-- Smile -->
+    <path d="M292 142 Q300 149 308 142" stroke="#C07A5A" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    <!-- Stethoscope on neck -->
+    <path d="M285 155 Q268 168 265 185 Q262 200 272 205" stroke="#555" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+    <circle cx="272" cy="208" r="7" fill="#777" stroke="#555" stroke-width="2"/>
+    <circle cx="272" cy="208" r="3.5" fill="#999"/>
+    <!-- Earpiece -->
+    <rect x="280" y="152" width="12" height="6" rx="3" fill="#555"/>
+    <!-- === PERSIAN CAT (on table) === -->
+    <g transform="translate(120, 180)">
+      <!-- Body - fluffy -->
+      <ellipse cx="70" cy="100" rx="55" ry="45" fill="url(#persian)"/>
+      <!-- Fluffy fur texture -->
+      <circle cx="30" cy="85" r="20" fill="#F0E6DE" opacity="0.5"/>
+      <circle cx="110" cy="85" r="18" fill="#F0E6DE" opacity="0.5"/>
+      <circle cx="70" cy="70" r="22" fill="#F0E6DE" opacity="0.3"/>
+      <!-- Head -->
+      <circle cx="70" cy="52" r="35" fill="url(#persian)"/>
+      <!-- Flat face (Persian characteristic) -->
+      <circle cx="70" cy="58" r="22" fill="#F5EDE8"/>
+      <!-- Ears (small, rounded) -->
+      <path d="M42 32 L36 10 L52 28Z" fill="#F0E6DE"/>
+      <path d="M98 32 L104 10 L88 28Z" fill="#F0E6DE"/>
+      <path d="M44 30 L40 16 L50 28Z" fill="#F0C0B0"/>
+      <path d="M96 30 L100 16 L90 28Z" fill="#F0C0B0"/>
+      <!-- Big round eyes -->
+      <circle cx="58" cy="50" r="8" fill="white"/>
+      <circle cx="82" cy="50" r="8" fill="white"/>
+      <circle cx="59" cy="50" r="5" fill="#D4956A"/>
+      <circle cx="83" cy="50" r="5" fill="#D4956A"/>
+      <circle cx="60.5" cy="48.5" r="2" fill="white"/>
+      <circle cx="84.5" cy="48.5" r="2" fill="white"/>
+      <!-- Flat nose -->
+      <ellipse cx="70" cy="58" rx="4" ry="3" fill="#D4856A"/>
+      <!-- Mouth -->
+      <path d="M64 63 Q70 68 76 63" stroke="#C07A5A" stroke-width="1.5" fill="none"/>
+      <!-- Whiskers -->
+      <line x1="30" y1="55" x2="50" y2="58" stroke="#D4C4B8" stroke-width="1.2"/>
+      <line x1="28" y1="62" x2="49" y2="62" stroke="#D4C4B8" stroke-width="1.2"/>
+      <line x1="30" y1="69" x2="50" y2="66" stroke="#D4C4B8" stroke-width="1.2"/>
+      <line x1="90" y1="58" x2="110" y2="55" stroke="#D4C4B8" stroke-width="1.2"/>
+      <line x1="91" y1="62" x2="112" y2="62" stroke="#D4C4B8" stroke-width="1.2"/>
+      <line x1="90" y1="66" x2="110" y2="69" stroke="#D4C4B8" stroke-width="1.2"/>
+      <!-- Front paws on table -->
+      <ellipse cx="40" cy="140" rx="15" ry="10" fill="#F0E6DE"/>
+      <ellipse cx="100" cy="140" rx="15" ry="10" fill="#F0E6DE"/>
+      <!-- Tail -->
+      <path d="M120 95 Q140 75 135 55 Q133 48 128 52 Q122 65 118 88" fill="url(#persian)"/>
+    </g>
+    <!-- === MAINE COON (sitting on floor) === -->
+    <g transform="translate(350, 200)">
+      <!-- Body -->
+      <ellipse cx="70" cy="85" rx="50" ry="45" fill="url(#coone)"/>
+      <!-- Tabby stripes -->
+      <path d="M40 75 Q70 68 100 75" stroke="#B09070" stroke-width="2" fill="none" opacity="0.3"/>
+      <path d="M35 85 Q70 78 105 85" stroke="#B09070" stroke-width="2" fill="none" opacity="0.3"/>
+      <path d="M38 95 Q70 88 102 95" stroke="#B09070" stroke-width="2" fill="none" opacity="0.3"/>
+      <!-- Head -->
+      <circle cx="70" cy="40" r="30" fill="url(#coone)"/>
+      <!-- Tufted ears (Maine Coon characteristic) -->
+      <path d="M44 22 L32 -5 L52 18Z" fill="#C4A882"/>
+      <path d="M96 22 L108 -5 L88 18Z" fill="#C4A882"/>
+      <!-- Ear tufts -->
+      <path d="M36 10 L30 0 L40 8Z" fill="#D4B896" stroke="#B09070" stroke-width="0.5"/>
+      <path d="M104 10 L110 0 L100 8Z" fill="#D4B896" stroke="#B09070" stroke-width="0.5"/>
+      <path d="M46 20 L42 6 L50 18Z" fill="#E0C8A8"/>
+      <path d="M94 20 L98 6 L90 18Z" fill="#E0C8A8"/>
+      <!-- Ruff (lion-like mane) -->
+      <path d="M42 35 Q32 50 36 68 Q40 55 44 45Z" fill="#E0C8A8"/>
+      <path d="M98 35 Q108 50 104 68 Q100 55 96 45Z" fill="#E0C8A8"/>
+      <!-- Face -->
+      <circle cx="58" cy="38" r="5" fill="white"/>
+      <circle cx="82" cy="38" r="5" fill="white"/>
+      <circle cx="59" cy="38" r="3" fill="#27AE60"/>
+      <circle cx="83" cy="38" r="3" fill="#27AE60"/>
+      <circle cx="60" cy="37" r="1.2" fill="white"/>
+      <circle cx="84" cy="37" r="1.2" fill="white"/>
+      <!-- Nose -->
+      <path d="M67 44 L70 47 L73 44Z" fill="#8B6F47"/>
+      <!-- Mouth -->
+      <path d="M64 49 Q70 54 76 49" stroke="#7A5F37" stroke-width="1.5" fill="none"/>
+      <!-- Whiskers -->
+      <line x1="30" y1="42" x2="52" y2="44" stroke="#C4A882" stroke-width="1.2"/>
+      <line x1="28" y1="48" x2="51" y2="48" stroke="#C4A882" stroke-width="1.2"/>
+      <line x1="88" y1="44" x2="110" y2="42" stroke="#C4A882" stroke-width="1.2"/>
+      <line x1="89" y1="48" x2="112" y2="48" stroke="#C4A882" stroke-width="1.2"/>
+      <!-- Bushy tail -->
+      <path d="M115 80 Q140 60 138 35 Q136 25 130 30 Q125 45 118 70" fill="#C4A882" stroke="#B09070" stroke-width="0.5"/>
+      <path d="M118 75 Q138 58 135 38 Q133 30 129 34 Q125 48 116 68" fill="#D4B896"/>
+      <!-- Front paws -->
+      <ellipse cx="50" cy="128" rx="14" ry="10" fill="#D4B896"/>
+      <ellipse cx="90" cy="128" rx="14" ry="10" fill="#D4B896"/>
+    </g>
+    <!-- Vet's left arm reaching toward Persian cat -->
+    <path d="M260 190 Q230 210 215 230" stroke="white" stroke-width="14" stroke-linecap="round" fill="none"/>
+    <!-- Hand on cat -->
+    <circle cx="212" cy="232" r="8" fill="#E8B89A"/>
+    <!-- Vet's right arm -->
+    <path d="M340 190 Q360 200 365 215" stroke="white" stroke-width="14" stroke-linecap="round" fill="none"/>
+    <circle cx="367" cy="218" r="8" fill="#E8B89A"/>
+    <!-- Label -->
+    <text x="300" y="380" text-anchor="middle" font-family="'Noto Serif',serif" font-size="18" font-weight="700" fill="#333">Dokter Hewan Memeriksa Kucing</text>
+    <text x="300" y="396" text-anchor="middle" font-family="Poppins,sans-serif" font-size="11" fill="#888">DiagnosaKu — Sistem Pakar Diagnosa Penyakit Kucing</text>
+  </g>
+</svg>

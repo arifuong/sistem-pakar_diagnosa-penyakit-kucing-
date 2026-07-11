@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 180" fill="none">
+  <!-- Cat wearing stethoscope -->
+  <!-- Stethoscope tubing -->
+  <path d="M65 95 Q50 105 48 120 Q46 135 55 140" stroke="#555" stroke-width="3" fill="none"/>
+  <path d="M75 95 Q90 105 92 120 Q94 135 85 140" stroke="#555" stroke-width="3" fill="none"/>
+  <!-- Stethoscope chest piece -->
+  <circle cx="70" cy="145" r="8" fill="#888" stroke="#555" stroke-width="2"/>
+  <circle cx="70" cy="145" r="3" fill="#aaa"/>
+  <!-- Earpieces -->
+  <path d="M62 92 L58 82" stroke="#555" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M78 92 L82 82" stroke="#555" stroke-width="2.5" stroke-linecap="round"/>
+  <circle cx="58" cy="80" r="3" fill="#555"/>
+  <circle cx="82" cy="80" r="3" fill="#555"/>
+  <!-- Cat body -->
+  <ellipse cx="70" cy="125" rx="38" ry="35" fill="#D4B892"/>
+  <ellipse cx="70" cy="125" rx="34" ry="32" fill="#E4C8A2"/>
+  <!-- Cat head -->
+  <circle cx="70" cy="68" r="28" fill="#E4C8A2"/>
+  <!-- Ears -->
+  <path d="M48 48 L40 22 L58 42Z" fill="#E4C8A2"/>
+  <path d="M92 48 L100 22 L82 42Z" fill="#E4C8A2"/>
+  <path d="M50 46 L44 30 L56 42Z" fill="#F0D0B0"/>
+  <path d="M90 46 L96 30 L84 42Z" fill="#F0D0B0"/>
+  <!-- Eyes (bright, healthy) -->
+  <circle cx="60" cy="64" r="5" fill="white"/>
+  <circle cx="80" cy="64" r="5" fill="white"/>
+  <circle cx="61" cy="64" r="3" fill="#27AE60"/>
+  <circle cx="81" cy="64" r="3" fill="#27AE60"/>
+  <circle cx="62" cy="63" r="1.2" fill="white"/>
+  <circle cx="82" cy="63" r="1.2" fill="white"/>
+  <!-- Nose -->
+  <ellipse cx="70" cy="73" rx="3" ry="2" fill="#C09070"/>
+  <!-- Mouth (smile) -->
+  <path d="M65 77 Q70 82 75 77" stroke="#A08060" stroke-width="1.5" fill="none"/>
+  <!-- Whiskers -->
+  <line x1="38" y1="70" x2="55" y2="72" stroke="#C0B0A0" stroke-width="1"/>
+  <line x1="36" y1="76" x2="54" y2="76" stroke="#C0B0A0" stroke-width="1"/>
+  <line x1="85" y1="72" x2="102" y2="70" stroke="#C0B0A0" stroke-width="1"/>
+  <line x1="86" y1="76" x2="104" y2="76" stroke="#C0B0A0" stroke-width="1"/>
+  <!-- Front paws -->
+  <ellipse cx="52" cy="158" rx="10" ry="7" fill="#E4C8A2"/>
+  <ellipse cx="88" cy="158" rx="10" ry="7" fill="#E4C8A2"/>
+  <!-- Tail -->
+  <path d="M105 125 Q120 110 118 90 Q116 82 112 88 Q108 100 103 115" fill="#E4C8A2"/>
+</svg>

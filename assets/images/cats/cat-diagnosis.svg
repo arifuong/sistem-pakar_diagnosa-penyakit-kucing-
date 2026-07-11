@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 180" fill="none">
+  <!-- Cat with magnifying glass (diagnosis) -->
+  <!-- Body -->
+  <ellipse cx="70" cy="128" rx="38" ry="35" fill="#E8D8F0"/>
+  <ellipse cx="70" cy="128" rx="34" ry="32" fill="#F0E6F6"/>
+  <!-- Head -->
+  <circle cx="70" cy="72" r="28" fill="#F0E6F6"/>
+  <!-- Ears -->
+  <path d="M48 50 L40 24 L58 44Z" fill="#F0E6F6"/>
+  <path d="M92 50 L100 24 L82 44Z" fill="#F0E6F6"/>
+  <path d="M50 48 L44 32 L56 44Z" fill="#F0C8E0"/>
+  <path d="M90 48 L96 32 L84 44Z" fill="#F0C8E0"/>
+  <!-- Curious eyes -->
+  <circle cx="60" cy="68" r="5.5" fill="white"/>
+  <circle cx="80" cy="68" r="5.5" fill="white"/>
+  <circle cx="61.5" cy="68" r="3.5" fill="#F39C12"/>
+  <circle cx="81.5" cy="68" r="3.5" fill="#F39C12"/>
+  <circle cx="62.5" cy="67" r="1.5" fill="white"/>
+  <circle cx="82.5" cy="67" r="1.5" fill="white"/>
+  <!-- Nose -->
+  <ellipse cx="70" cy="78" rx="3" ry="2" fill="#D7A0C0"/>
+  <!-- Mouth -->
+  <path d="M66 82 Q70 86 74 82" stroke="#C08090" stroke-width="1.5" fill="none"/>
+  <!-- Whiskers -->
+  <line x1="38" y1="74" x2="55" y2="76" stroke="#D0C0D0" stroke-width="1"/>
+  <line x1="36" y1="80" x2="54" y2="80" stroke="#D0C0D0" stroke-width="1"/>
+  <line x1="85" y1="76" x2="102" y2="74" stroke="#D0C0D0" stroke-width="1"/>
+  <line x1="86" y1="80" x2="104" y2="80" stroke="#D0C0D0" stroke-width="1"/>
+  <!-- Arm holding magnifying glass -->
+  <path d="M100 100 Q115 90 120 75" stroke="#F0E6F6" stroke-width="8" stroke-linecap="round" fill="none"/>
+  <!-- Magnifying glass -->
+  <circle cx="125" cy="65" r="15" fill="rgba(123,186,193,0.15)" stroke="#7BBAC1" stroke-width="3"/>
+  <circle cx="125" cy="65" r="12" fill="rgba(255,255,255,0.3)"/>
+  <line x1="136" y1="76" x2="148" y2="88" stroke="#7BBAC1" stroke-width="4" stroke-linecap="round"/>
+  <!-- Sparkle on lens -->
+  <circle cx="120" cy="58" r="2" fill="white" opacity="0.8"/>
+  <!-- Front paws -->
+  <ellipse cx="52" cy="160" rx="10" ry="7" fill="#F0E6F6"/>
+  <ellipse cx="88" cy="160" rx="10" ry="7" fill="#F0E6F6"/>
+  <!-- Tail -->
+  <path d="M105 125 Q120 110 118 92 Q116 84 113 90 Q110 102 103 118" fill="#F0E6F6"/>
+</svg>

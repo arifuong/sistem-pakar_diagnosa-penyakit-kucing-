@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none">
+  <defs>
+    <linearGradient id="lgr" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#D71F84"/>
+      <stop offset="100%" stop-color="#6F2282"/>
+    </linearGradient>
+  </defs>
+  <!-- Cat head silhouette -->
+  <path d="M100 185 C52 185 15 152 15 112 C15 76 42 45 58 30 L68 8 L80 24 C88 18 94 18 100 24 C106 18 112 18 120 24 L132 8 L142 30 C158 45 185 76 185 112 C185 152 148 185 100 185Z" fill="url(#lgr)"/>
+  <!-- Inner ear -->
+  <path d="M60 32 L68 10 L78 28Z" fill="rgba(255,255,255,0.12)"/>
+  <path d="M140 32 L132 10 L122 28Z" fill="rgba(255,255,255,0.12)"/>
+  <!-- Eyes -->
+  <ellipse cx="75" cy="98" rx="11" ry="10" fill="white"/>
+  <ellipse cx="125" cy="98" rx="11" ry="10" fill="white"/>
+  <ellipse cx="77" cy="98" rx="6.5" ry="6.5" fill="#333"/>
+  <ellipse cx="127" cy="98" rx="6.5" ry="6.5" fill="#333"/>
+  <circle cx="80" cy="95" r="2.8" fill="white"/>
+  <circle cx="130" cy="95" r="2.8" fill="white"/>
+  <!-- Nose -->
+  <path d="M95 115 L100 121 L105 115Z" fill="white" opacity="0.75"/>
+  <!-- Mouth -->
+  <path d="M90 126 Q100 136 110 126" stroke="white" stroke-width="2" fill="none" opacity="0.5"/>
+  <!-- Stethoscope -->
+  <path d="M85 140 Q68 152 66 168 Q64 180 78 184" stroke="white" stroke-width="3" fill="none" opacity="0.6"/>
+  <path d="M115 140 Q132 152 134 168 Q136 180 122 184" stroke="white" stroke-width="3" fill="none" opacity="0.6"/>
+  <circle cx="100" cy="188" r="7" fill="white" opacity="0.85"/>
+  <circle cx="100" cy="188" r="3.5" fill="rgba(215,31,132,0.25)"/>
+  <!-- Medical cross on forehead -->
+  <rect x="94" y="68" width="12" height="22" rx="2" fill="white" opacity="0.75"/>
+  <rect x="89" y="73" width="22" height="12" rx="2" fill="white" opacity="0.75"/>
+</svg>

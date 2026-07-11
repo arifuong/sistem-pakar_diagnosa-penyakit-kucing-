@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none">
+  <defs>
+    <linearGradient id="pgr" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#D71F84"/>
+      <stop offset="100%" stop-color="#6F2282"/>
+    </linearGradient>
+  </defs>
+  <!-- Row 1 -->
+  <g transform="translate(20, 20)">
+    <ellipse cx="15" cy="25" rx="12" ry="14" fill="url(#pgr)" opacity="0.3"/>
+    <ellipse cx="3" cy="8" rx="7" ry="9" fill="url(#pgr)" opacity="0.3" transform="rotate(-15 3 8)"/>
+    <ellipse cx="15" cy="2" rx="6.5" ry="9" fill="url(#pgr)" opacity="0.3"/>
+    <ellipse cx="27" cy="8" rx="7" ry="9" fill="url(#pgr)" opacity="0.3" transform="rotate(15 27 8)"/>
+  </g>
+  <g transform="translate(80, 15)">
+    <ellipse cx="15" cy="25" rx="12" ry="14" fill="url(#pgr)" opacity="0.5"/>
+    <ellipse cx="3" cy="8" rx="7" ry="9" fill="url(#pgr)" opacity="0.5" transform="rotate(-15 3 8)"/>
+    <ellipse cx="15" cy="2" rx="6.5" ry="9" fill="url(#pgr)" opacity="0.5"/>
+    <ellipse cx="27" cy="8" rx="7" ry="9" fill="url(#pgr)" opacity="0.5" transform="rotate(15 27 8)"/>
+  </g>
+  <g transform="translate(140, 25)">
+    <ellipse cx="15" cy="25" rx="12" ry="14" fill="url(#pgr)" opacity="0.25"/>
+    <ellipse cx="3" cy="8" rx="7" ry="9" fill="url(#pgr)" opacity="0.25" transform="rotate(-15 3 8)"/>
+    <ellipse cx="15" cy="2" rx="6.5" ry="9" fill="url(#pgr)" opacity="0.25"/>
+    <ellipse cx="27" cy="8" rx="7" ry="9" fill="url(#pgr)" opacity="0.25" transform="rotate(15 27 8)"/>
+  </g>
+  <!-- Row 2 -->
+  <g transform="translate(10, 85)">
+    <ellipse cx="15" cy="25" rx="12" ry="14" fill="url(#pgr)" opacity="0.35"/>
+    <ellipse cx="3" cy="8" rx="7" ry="9" fill="url(#pgr)" opacity="0.35" transform="rotate(-15 3 8)"/>
+    <ellipse cx="15" cy="2" rx="6.5" ry="9" fill="url(#pgr)" opacity="0.35"/>
+    <ellipse cx="27" cy="8" rx="7" ry="9" fill="url(#pgr)" opacity="0.35" transform="rotate(15 27 8)"/>
+  </g>
+  <g transform="translate(70, 80)">
+    <ellipse cx="15" cy="25" rx="12" ry="14" fill="url(#pgr)" opacity="0.6"/>
+    <ellipse cx="3" cy="8" rx="7" ry="9" fill="url(#pgr)" opacity="0.6" transform="rotate(-15 3 8)"/>
+    <ellipse cx="15" cy="2" rx="6.5" ry="9" fill="url(#pgr)" opacity="0.6"/>
+    <ellipse cx="27" cy="8" rx="7" ry="9" fill="url(#pgr)" opacity="0.6" transform="rotate(15 27 8)"/>
+  </g>
+  <g transform="translate(135, 90)">
+    <ellipse cx="15" cy="25" rx="12" ry="14" fill="url(#pgr)" opacity="0.3"/>
+    <ellipse cx="3" cy="8" rx="7" ry="9" fill="url(#pgr)" opacity="0.3" transform="rotate(-15 3 8)"/>
+    <ellipse cx="15" cy="2" rx="6.5" ry="9" fill="url(#pgr)" opacity="0.3"/>
+    <ellipse cx="27" cy="8" rx="7" ry="9" fill="url(#pgr)" opacity="0.3" transform="rotate(15 27 8)"/>
+  </g>
+  <!-- Row 3 -->
+  <g transform="translate(25, 145)">
+    <ellipse cx="15" cy="25" rx="12" ry="14" fill="url(#pgr)" opacity="0.2"/>
+    <ellipse cx="3" cy="8" rx="7" ry="9" fill="url(#pgr)" opacity="0.2" transform="rotate(-15 3 8)"/>
+    <ellipse cx="15" cy="2" rx="6.5" ry="9" fill="url(#pgr)" opacity="0.2"/>
+    <ellipse cx="27" cy="8" rx="7" ry="9" fill="url(#pgr)" opacity="0.2" transform="rotate(15 27 8)"/>
+  </g>
+  <g transform="translate(90, 140)">
+    <ellipse cx="15" cy="25" rx="12" ry="14" fill="url(#pgr)" opacity="0.45"/>
+    <ellipse cx="3" cy="8" rx="7" ry="9" fill="url(#pgr)" opacity="0.45" transform="rotate(-15 3 8)"/>
+    <ellipse cx="15" cy="2" rx="6.5" ry="9" fill="url(#pgr)" opacity="0.45"/>
+    <ellipse cx="27" cy="8" rx="7" ry="9" fill="url(#pgr)" opacity="0.45" transform="rotate(15 27 8)"/>
+  </g>
+  <g transform="translate(150, 150)">
+    <ellipse cx="15" cy="25" rx="12" ry="14" fill="url(#pgr)" opacity="0.15"/>
+    <ellipse cx="3" cy="8" rx="7" ry="9" fill="url(#pgr)" opacity="0.15" transform="rotate(-15 3 8)"/>
+    <ellipse cx="15" cy="2" rx="6.5" ry="9" fill="url(#pgr)" opacity="0.15"/>
+    <ellipse cx="27" cy="8" rx="7" ry="9" fill="url(#pgr)" opacity="0.15" transform="rotate(15 27 8)"/>
+  </g>
+</svg>

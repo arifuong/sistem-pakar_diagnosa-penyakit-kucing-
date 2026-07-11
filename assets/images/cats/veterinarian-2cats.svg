@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 280" fill="none">
+  <!-- Veterinarian with 2 cats (Persian + Maine Coon) + medical equipment -->
+  <defs>
+    <linearGradient id="hero-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#D71F84" stop-opacity="0.05"/>
+      <stop offset="100%" stop-color="#6F2282" stop-opacity="0.05"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Medical equipment - clipboard on stand -->
+  <rect x="300" y="80" width="60" height="75" rx="5" fill="#F5F0E0" stroke="#C8B090" stroke-width="2"/>
+  <rect x="315" y="75" width="30" height="10" rx="4" fill="#C8B090"/>
+  <line x1="310" y1="100" x2="350" y2="100" stroke="#D71F84" stroke-width="2.5"/>
+  <line x1="310" y1="110" x2="345" y2="110" stroke="#DDD" stroke-width="2"/>
+  <line x1="310" y1="120" x2="348" y2="120" stroke="#DDD" stroke-width="2"/>
+  <line x1="310" y1="130" x2="340" y2="130" stroke="#DDD" stroke-width="2"/>
+  <circle cx="307" cy="100" r="3" fill="#27AE60"/>
+  <circle cx="307" cy="110" r="3" fill="#F39C12"/>
+  <circle cx="307" cy="120" r="3" fill="#27AE60"/>
+  
+  <!-- Stethoscope hanging -->
+  <path d="M280 90 Q270 100 268 115 Q266 128 275 132" stroke="#555" stroke-width="2.5" fill="none"/>
+  <circle cx="275" cy="135" r="6" fill="#888" stroke="#555" stroke-width="1.5"/>
+  
+  <!-- Veterinarian -->
+  <!-- Lab coat -->
+  <path d="M170 80 L162 200 L238 200 L230 80Z" fill="white" stroke="#D71F84" stroke-width="2" rx="5"/>
+  <!-- Coat collar -->
+  <path d="M185 80 L190 100 L210 100 L215 80" fill="white" stroke="#D71F84" stroke-width="1.5"/>
+  <!-- Buttons -->
+  <circle cx="200" cy="115" r="2.5" fill="#D71F84"/>
+  <circle cx="200" cy="130" r="2.5" fill="#D71F84"/>
+  <circle cx="200" cy="145" r="2.5" fill="#D71F84"/>
+  <!-- Head -->
+  <circle cx="200" cy="58" r="25" fill="#F5D0B0"/>
+  <!-- Hair -->
+  <path d="M175 52 Q180 25 200 28 Q220 25 225 52" fill="#4A3728"/>
+  <path d="M177 50 Q172 35 180 28" fill="#4A3728"/>
+  <path d="M223 50 Q228 35 220 28" fill="#4A3728"/>
+  <!-- Face -->
+  <circle cx="191" cy="55" r="3" fill="#333"/>
+  <circle cx="209" cy="55" r="3" fill="#333"/>
+  <path d="M195 65 Q200 70 205 65" stroke="#D7A080" stroke-width="2" fill="none"/>
+  <!-- Stethoscope on neck -->
+  <path d="M190 78 Q178 88 175 100 Q172 112 180 115" stroke="#555" stroke-width="2.5" fill="none"/>
+  <circle cx="180" cy="118" r="5" fill="#888" stroke="#555" stroke-width="1.5"/>
+  
+  <!-- Left arm holding Persian cat -->
+  <path d="M170 100 Q145 115 140 130" stroke="white" stroke-width="12" stroke-linecap="round"/>
+  
+  <!-- Persian Cat (held in left arm) -->
+  <ellipse cx="125" cy="145" rx="30" ry="22" fill="#F0E6F6"/>
+  <circle cx="115" cy="125" r="16" fill="#F0E6F6"/>
+  <path d="M103 114 L98 98 L110 111Z" fill="#F0E6F6"/>
+  <path d="M127 114 L132 98 L120 111Z" fill="#F0E6F6"/>
+  <path d="M104 113 L100 103 L109 111Z" fill="#F0C8E0"/>
+  <path d="M126 113 L130 103 L121 111Z" fill="#F0C8E0"/>
+  <circle cx="110" cy="122" r="3.5" fill="white"/>
+  <circle cx="122" cy="122" r="3.5" fill="white"/>
+  <circle cx="110.5" cy="122" r="2" fill="#333"/>
+  <circle cx="122.5" cy="122" r="2" fill="#333"/>
+  <ellipse cx="116" cy="128" rx="2" ry="1.5" fill="#D7A0C0"/>
+  <path d="M112 132 Q116 135 120 132" stroke="#C08090" stroke-width="1" fill="none"/>
+  <path d="M152 145 Q162 135 158 120 Q156 115 153 118 Q150 128 150 138" fill="#F0E6F6"/>
+  
+  <!-- Right arm petting Maine Coon -->
+  <path d="M230 100 Q255 115 258 130" stroke="white" stroke-width="12" stroke-linecap="round"/>
+  
+  <!-- Maine Coon (on ground, right side) -->
+  <ellipse cx="280" cy="200" rx="45" ry="40" fill="#D4B892"/>
+  <ellipse cx="280" cy="200" rx="40" ry="37" fill="#E4C8A2"/>
+  <ellipse cx="280" cy="178" rx="25" ry="18" fill="#E8DCC8"/>
+  <circle cx="280" cy="148" r="24" fill="#E4C8A2"/>
+  <!-- Tufted ears -->
+  <path d="M260 130 L250 105 L268 126Z" fill="#E4C8A2"/>
+  <path d="M300 130 L310 105 L292 126Z" fill="#E4C8A2"/>
+  <path d="M262 128 L254 112 L267 126Z" fill="#E8DCC8"/>
+  <path d="M298 128 L306 112 L293 126Z" fill="#E8DCC8"/>
+  <!-- Ruff -->
+  <path d="M258 145 Q248 160 252 178 Q256 165 260 155Z" fill="#E8DCC8"/>
+  <path d="M302 145 Q312 160 308 178 Q304 165 300 155Z" fill="#E8DCC8"/>
+  <!-- Eyes -->
+  <circle cx="272" cy="145" r="4" fill="white"/>
+  <circle cx="288" cy="145" r="4" fill="white"/>
+  <circle cx="272.5" cy="145" r="2.5" fill="#27AE60"/>
+  <circle cx="288.5" cy="145" r="2.5" fill="#27AE60"/>
+  <circle cx="273.5" cy="144" r="1" fill="white"/>
+  <circle cx="289.5" cy="144" r="1" fill="white"/>
+  <path d="M278 152 L280 155 L282 152" fill="#B09870"/>
+  <path d="M275 158 Q280 162 285 158" stroke="#A08860" stroke-width="1.5" fill="none"/>
+  <!-- Tabby stripes -->
+  <path d="M260 190 Q280 185 300 190" stroke="#B09870" stroke-width="1.5" fill="none" opacity="0.4"/>
+  <path d="M262 200 Q280 195 298 200" stroke="#B09870" stroke-width="1.5" fill="none" opacity="0.4"/>
+  <!-- Bushy tail -->
+  <path d="M322 200 Q345 185 340 165 Q338 158 334 162 Q328 175 320 190" fill="#D4B892" stroke="#B09870" stroke-width="0.5"/>
+  <path d="M325 195 Q342 182 338 168 Q335 162 332 166 Q328 178 323 190" fill="#E4C8A2"/>
+  <!-- Paws -->
+  <ellipse cx="260" cy="238" rx="12" ry="8" fill="#E4C8A2"/>
+  <ellipse cx="300" cy="238" rx="12" ry="8" fill="#E4C8A2"/>
+  
+  <!-- Medicine bottles on table -->
+  <rect x="30" y="195" width="80" height="8" rx="2" fill="#E8D8F0"/>
+  <rect x="40" y="175" width="15" height="22" rx="3" fill="#D71F84" opacity="0.8"/>
+  <rect x="60" y="180" width="12" height="17" rx="3" fill="#27AE60" opacity="0.8"/>
+  <rect x="78" y="178" width="14" height="19" rx="3" fill="#7BBAC1" opacity="0.8"/>
+  <circle cx="47" cy="172" r="3" fill="#D71F84" opacity="0.6"/>
+  <circle cx="66" cy="177" r="2.5" fill="#27AE60" opacity="0.6"/>
+  <circle cx="85" cy="175" r="3" fill="#7BBAC1" opacity="0.6"/>
+</svg>

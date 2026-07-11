@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none">
+  <!-- Detailed paw print -->
+  <!-- Main pad -->
+  <path d="M100 130 C80 130 65 145 65 160 C65 175 80 190 100 190 C120 190 135 175 135 160 C135 145 120 130 100 130Z" fill="url(#paw1)"/>
+  <!-- Toe pads -->
+  <ellipse cx="70" cy="105" rx="18" ry="22" fill="url(#paw1)" transform="rotate(-15 70 105)"/>
+  <ellipse cx="100" cy="90" rx="17" ry="22" fill="url(#paw1)"/>
+  <ellipse cx="130" cy="105" rx="18" ry="22" fill="url(#paw1)" transform="rotate(15 130 105)"/>
+  <!-- Inner toe detail -->
+  <ellipse cx="145" cy="120" rx="14" ry="18" fill="url(#paw1)" transform="rotate(30 145 120)"/>
+  <!-- Pad details (creases) -->
+  <path d="M85 155 Q100 148 115 155" stroke="rgba(255,255,255,0.3)" stroke-width="2" fill="none"/>
+  <path d="M90 165 Q100 160 110 165" stroke="rgba(255,255,255,0.3)" stroke-width="1.5" fill="none"/>
+  <defs>
+    <linearGradient id="paw1" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#D71F84"/>
+      <stop offset="100%" stop-color="#6F2282"/>
+    </linearGradient>
+  </defs>
+</svg>

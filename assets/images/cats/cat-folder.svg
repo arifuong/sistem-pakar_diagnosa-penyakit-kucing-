@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none">
+  <!-- Cat sitting with folder -->
+  <!-- Folder behind cat -->
+  <rect x="90" y="55" width="70" height="55" rx="5" fill="#E8F4F8" stroke="#7BBAC1" stroke-width="2"/>
+  <rect x="90" y="50" width="30" height="10" rx="3" fill="#7BBAC1"/>
+  <line x1="100" y1="75" x2="150" y2="75" stroke="#B0D8DD" stroke-width="2"/>
+  <line x1="100" y1="83" x2="145" y2="83" stroke="#B0D8DD" stroke-width="2"/>
+  <line x1="100" y1="91" x2="140" y2="91" stroke="#B0D8DD" stroke-width="2"/>
+  <!-- Cat body -->
+  <ellipse cx="75" cy="130" rx="42" ry="40" fill="#E8D8F0"/>
+  <ellipse cx="75" cy="130" rx="38" ry="37" fill="#F0E6F6"/>
+  <!-- Head -->
+  <circle cx="75" cy="75" r="30" fill="#F0E6F6"/>
+  <!-- Ears -->
+  <path d="M52 52 L44 24 L62 46Z" fill="#F0E6F6"/>
+  <path d="M98 52 L106 24 L88 46Z" fill="#F0E6F6"/>
+  <path d="M54 50 L48 32 L60 46Z" fill="#F0C8E0"/>
+  <path d="M96 50 L102 32 L90 46Z" fill="#F0C8E0"/>
+  <!-- Eyes -->
+  <circle cx="64" cy="72" r="5" fill="white"/>
+  <circle cx="86" cy="72" r="5" fill="white"/>
+  <circle cx="65" cy="72" r="3" fill="#333"/>
+  <circle cx="87" cy="72" r="3" fill="#333"/>
+  <circle cx="66.5" cy="70.5" r="1.2" fill="white"/>
+  <circle cx="88.5" cy="70.5" r="1.2" fill="white"/>
+  <!-- Nose -->
+  <ellipse cx="75" cy="81" rx="3" ry="2" fill="#D7A0C0"/>
+  <!-- Mouth -->
+  <path d="M71 85 Q75 89 79 85" stroke="#C08090" stroke-width="1.5" fill="none"/>
+  <!-- Whiskers -->
+  <line x1="42" y1="78" x2="58" y2="80" stroke="#D0C0D0" stroke-width="1"/>
+  <line x1="40" y1="84" x2="57" y2="84" stroke="#D0C0D0" stroke-width="1"/>
+  <line x1="92" y1="80" x2="108" y2="78" stroke="#D0C0D0" stroke-width="1"/>
+  <line x1="93" y1="84" x2="110" y2="84" stroke="#D0C0D0" stroke-width="1"/>
+  <!-- Paw on folder -->
+  <ellipse cx="95" cy="108" rx="10" ry="7" fill="#F0E6F6"/>
+  <!-- Front paws -->
+  <ellipse cx="55" cy="167" rx="12" ry="8" fill="#F0E6F6"/>
+  <ellipse cx="95" cy="167" rx="12" ry="8" fill="#F0E6F6"/>
+  <!-- Tail -->
+  <path d="M115 130 Q130 115 128 95 Q126 88 122 92 Q118 105 113 122" fill="#F0E6F6"/>
+</svg>
