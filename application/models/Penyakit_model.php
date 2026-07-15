@@ -1,4 +1,5 @@
 <?php
+defined('BASEPATH') or exit('No direct script access allowed');
 
 class Penyakit_model extends CI_Model
 {
@@ -6,67 +7,93 @@ class Penyakit_model extends CI_Model
     {
         $this->db->select_max('kode_penyakit', 'kode');
         $query = $this->db->get('penyakit')->row();
-        $data = $query->kode;
-        $noUrut = (int) substr($data, 1, 2);
-        $noUrut++;
-        return 'K' . sprintf('%02s', $noUrut);
+        if ($query && $query->kode) {
+            $data = $query->kode;
+            $noUrut = (int) substr($data, 1);
+            $noUrut++;
+            return 'P' . sprintf('%02d', $noUrut);
+        }
+        return 'P01';
     }
 
     public function getPenyakit()
     {
-        return $this->db->get('penyakit')->result();
+        $this->db->select('penyakit.*, solusi.solusi');
+        $this->db->from('penyakit');
+        $this->db->join('solusi', 'solusi.penyakit_id = penyakit.id_penyakit', 'left');
+        $this->db->order_by('penyakit.kode_penyakit', 'ASC');
+        return $this->db->get()->result();
     }
 
     public function getPenyakitId($id)
     {
-        return $this->db->get_where('penyakit', array('id_penyakit' => $id))->row();
+        $this->db->select('penyakit.*, solusi.solusi');
+        $this->db->from('penyakit');
+        $this->db->join('solusi', 'solusi.penyakit_id = penyakit.id_penyakit', 'left');
+        $this->db->where('penyakit.id_penyakit', $id);
+        return $this->db->get()->row();
     }
 
     public function insert()
     {
-        $data = [
-            'kode_penyakit' => $this->input->post('kode'),
-            'penyakit' => $this->input->post('penyakit'),
-            'solusi' => $this->input->post('solusi')
+        $this->db->trans_start();
+
+        $data_penyakit = [
+            'kode_penyakit' => $this->input->post('kode', TRUE),
+            'nama_penyakit' => $this->input->post('nama_penyakit', TRUE),
+            'definisi' => $this->input->post('definisi', TRUE),
+            'penyebab' => $this->input->post('penyebab', TRUE),
+            'pencegahan' => $this->input->post('pencegahan', TRUE)
         ];
-        $this->db->insert('penyakit', $data);
+        $this->db->insert('penyakit', $data_penyakit);
+        $penyakit_id = $this->db->insert_id();
 
-        $id = $this->db->select_max('id_penyakit', 'id')->get('penyakit')->row();
+        $data_solusi = [
+            'penyakit_id' => $penyakit_id,
+            'solusi' => $this->input->post('solusi', TRUE)
+        ];
+        $this->db->insert('solusi', $data_solusi);
 
-        $check = $this->input->post('gejala');
-        if (is_array($check)) {
-            foreach ($check as $object) {
-                $this->db->insert('relasi', [
-                    'penyakit_id' => $id->id,
-                    'gejala_id' => $object
-                ]);
-            }
+        $this->db->trans_complete();
+
+        if ($this->db->trans_status() === FALSE) {
+            return FALSE;
         }
+
+        return $penyakit_id;
     }
 
     public function update($id)
     {
-        $data = [
-            'penyakit' => $this->input->post('penyakit'),
-            'solusi' => $this->input->post('solusi')
-        ];
-        $this->db->update('penyakit', $data, ['id_penyakit' => $id]);
+        $this->db->trans_start();
 
-        $this->db->delete('relasi', ['penyakit_id' => $id]);
-        $check = $this->input->post('gejala');
-        if (is_array($check)) {
-            foreach ($check as $object) {
-                $this->db->insert('relasi', [
-                    'penyakit_id' => $id,
-                    'gejala_id' => $object
-                ]);
-            }
+        $data_penyakit = [
+            'nama_penyakit' => $this->input->post('nama_penyakit', TRUE),
+            'definisi' => $this->input->post('definisi', TRUE),
+            'penyebab' => $this->input->post('penyebab', TRUE),
+            'pencegahan' => $this->input->post('pencegahan', TRUE)
+        ];
+        $this->db->update('penyakit', $data_penyakit, ['id_penyakit' => $id]);
+
+        // Check if solution already exists
+        $check = $this->db->get_where('solusi', ['penyakit_id' => $id])->row();
+        $data_solusi = [
+            'solusi' => $this->input->post('solusi', TRUE)
+        ];
+        if ($check) {
+            $this->db->update('solusi', $data_solusi, ['penyakit_id' => $id]);
+        } else {
+            $data_solusi['penyakit_id'] = $id;
+            $this->db->insert('solusi', $data_solusi);
         }
+
+        $this->db->trans_complete();
+        return $this->db->trans_status();
     }
 
     public function delete($id)
     {
-        $this->db->delete('penyakit', ['id_penyakit' => $id]);
-        $this->db->delete('relasi', ['penyakit_id' => $id]);
+        // Foreign keys with cascade delete will automatically remove the corresponding rules and solutions
+        return $this->db->delete('penyakit', ['id_penyakit' => $id]);
     }
 }

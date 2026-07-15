@@ -6,6 +6,7 @@ class Kucing extends CI_Controller
     public function __construct()
     {
         parent::__construct();
+        chek_seesion(); // Check if admin is logged in
         $this->form_validation->set_message('required', '{field} wajib diisi.');
     }
 
@@ -17,7 +18,7 @@ class Kucing extends CI_Controller
         $this->load->view('templates/header', $data);
         $this->load->view('templates/topbar');
         $this->load->view('templates/sidebar');
-        $this->load->view('kucing/index');
+        $this->load->view('kucing/index', $data);
         $this->load->view('templates/footer');
     }
 
@@ -25,10 +26,11 @@ class Kucing extends CI_Controller
     {
         $data['title'] = 'Tambah Data Jenis Kucing';
         $data['id'] = $this->kucing->id_jenis();
+
         $this->load->view('templates/header', $data);
         $this->load->view('templates/topbar');
         $this->load->view('templates/sidebar');
-        $this->load->view('kucing/tambah_jenis');
+        $this->load->view('kucing/tambah_jenis', $data);
         $this->load->view('templates/footer');
     }
 
@@ -44,7 +46,7 @@ class Kucing extends CI_Controller
                 'id' => $this->input->post('id', TRUE),
                 'nama' => $this->input->post('nama', TRUE)
             ];
-            $this->db->insert('jenis', $data);
+            $this->db->insert('jenis_kucing', $data);
             $this->session->set_flashdata('success', 'Data jenis kucing berhasil disimpan!');
             redirect('kucing');
         }
@@ -52,7 +54,7 @@ class Kucing extends CI_Controller
 
     public function delete($id)
     {
-        $this->db->delete('jenis', ['id' => $id]);
+        $this->db->delete('jenis_kucing', ['id' => $id]);
         $this->session->set_flashdata('success', 'Data jenis kucing berhasil dihapus!');
         redirect('kucing');
     }

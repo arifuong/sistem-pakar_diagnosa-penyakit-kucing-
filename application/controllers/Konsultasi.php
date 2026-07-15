@@ -6,27 +6,28 @@ class Konsultasi extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->load->library('forward_chaining');
         $this->form_validation->set_message('required', '{field} wajib diisi.');
         $this->form_validation->set_message('valid_email', '{field} harus berupa email yang valid.');
     }
 
     public function index()
     {
-        $data['title'] = 'Konsultasi Diagnosa';
+        $this->session->unset_userdata('konsultasi_data');
+        $this->session->unset_userdata('diagnosa_id');
+        $data['title'] = 'Identitas Kucing & Pemilik';
         $data['jenis'] = $this->kucing->getJenis();
         $this->load->view('konsultasi/index', $data);
     }
 
     public function mulai()
     {
-        $this->form_validation->set_rules('nama', 'Nama Lengkap', 'required|trim');
+        $this->form_validation->set_rules('nama', 'Nama Pemilik', 'required|trim');
         $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email');
         $this->form_validation->set_rules('id_jenis', 'Jenis Kucing', 'required');
         $this->form_validation->set_rules('namakucing', 'Nama Kucing', 'required|trim|callback_valid_nama_kucing');
 
         if ($this->form_validation->run() === FALSE) {
-            $data['title'] = 'Konsultasi Diagnosa';
+            $data['title'] = 'Identitas Kucing & Pemilik';
             $data['jenis'] = $this->kucing->getJenis();
             $this->load->view('konsultasi/index', $data);
         } else {
@@ -37,10 +38,7 @@ class Konsultasi extends CI_Controller
                 'namakucing' => $this->input->post('namakucing', TRUE)
             ];
             $this->session->set_userdata('konsultasi_data', $konsultasi_data);
-            $this->session->set_userdata('gejala_dipilih', []);
-            $this->session->set_userdata('kode_sekarang', 'G01');
-
-            redirect('konsultasi/pertanyaan');
+            redirect('konsultasi/gejala');
         }
     }
 
@@ -61,117 +59,115 @@ class Konsultasi extends CI_Controller
         return TRUE;
     }
 
-    public function pertanyaan()
+    public function gejala()
     {
-        $kode = $this->session->userdata('kode_sekarang');
-        if (!$kode) {
+        $konsultasi_data = $this->session->userdata('konsultasi_data');
+        if (!$konsultasi_data) {
+            $this->session->set_flashdata('error', 'Silakan masukkan identitas kucing terlebih dahulu.');
             redirect('konsultasi');
             return;
         }
 
-        $pertanyaan = $this->forward_chaining->get_pertanyaan($kode);
-        if (!$pertanyaan) {
-            $this->session->unset_userdata('kode_sekarang');
-            redirect('konsultasi');
-            return;
-        }
+        $data['title'] = 'Pilih Gejala Kucing';
+        $data['gejala'] = $this->gejala->getGejala();
+        
+        // Define standard CF options for user selection
+        $data['cf_options'] = [
+            '0.0' => 'Tidak Terjadi / Tidak Tahu (0.0)',
+            '0.2' => 'Sedikit Yakin (0.2)',
+            '0.4' => 'Cukup Yakin (0.4)',
+            '0.6' => 'Yakin (0.6)',
+            '0.8' => 'Sangat Yakin (0.8)',
+            '1.0' => 'Pasti Terjadi (1.0)',
+        ];
 
-        $data['title'] = 'Jawab Pertanyaan';
-        $data['pertanyaan'] = $pertanyaan;
-        $this->load->view('konsultasi/pertanyaan', $data);
+        $this->load->view('konsultasi/gejala', $data);
     }
 
-    public function jawab()
+    public function proses()
     {
-        $jawaban = $this->input->post('jawaban', TRUE);
-        if (!$jawaban || !in_array($jawaban, ['ya', 'tidak'])) {
-            redirect('konsultasi/pertanyaan');
-            return;
-        }
-
-        $kode_sekarang = $this->session->userdata('kode_sekarang');
-        if (!$kode_sekarang) {
+        $konsultasi_data = $this->session->userdata('konsultasi_data');
+        if (!$konsultasi_data) {
             redirect('konsultasi');
             return;
         }
 
-        $gejala_dipilih = $this->session->userdata('gejala_dipilih');
-        if (!is_array($gejala_dipilih)) {
-            $gejala_dipilih = [];
+        $gejala_input = $this->input->post('gejala', TRUE); // Array of gejala IDs
+        $cf_user_input = $this->input->post('cf_user', TRUE); // Associative array [gejala_id => cf_value]
+
+        if (empty($gejala_input) || !is_array($gejala_input)) {
+            $this->session->set_flashdata('error', 'Silakan pilih minimal 1 gejala yang terlihat pada kucing.');
+            redirect('konsultasi/gejala');
+            return;
         }
 
-        $gejala_row = $this->db->get_where('gejala', ['kode_gejala' => $kode_sekarang])->row_array();
-        if ($gejala_row) {
-            $gejala_dipilih[] = $gejala_row['id_gejala'];
+        // Prepare the active symptom inputs with their corresponding user CFs
+        $gejala_selected = [];
+        foreach ($gejala_input as $gejala_id) {
+            $cf_val = isset($cf_user_input[$gejala_id]) ? floatval($cf_user_input[$gejala_id]) : 0.0;
+            if ($cf_val > 0) {
+                $gejala_selected[$gejala_id] = $cf_val;
+            }
         }
-        $this->session->set_userdata('gejala_dipilih', $gejala_dipilih);
 
-        $hasil = $this->forward_chaining->proses_jawaban($kode_sekarang, $jawaban);
-
-        if ($hasil['selesai']) {
-            $this->session->set_userdata('kode_penyakit', $hasil['kode_penyakit']);
-            $this->session->unset_userdata('kode_sekarang');
-            redirect('konsultasi/hasil');
-        } else {
-            $this->session->set_userdata('kode_sekarang', $hasil['kode_selanjutnya']);
-            redirect('konsultasi/pertanyaan');
+        if (empty($gejala_selected)) {
+            $this->session->set_flashdata('error', 'Anda harus memilih tingkat keyakinan yang valid (> 0) untuk gejala yang dicentang.');
+            redirect('konsultasi/gejala');
+            return;
         }
+
+        // Run Certainty Factor Inference
+        $diagnosa_results = $this->certaintyfactor->diagnosa($gejala_selected);
+
+        // Save consultation details
+        $data_konsultasi = [
+            'nama_pemilik' => $konsultasi_data['nama'],
+            'email' => $konsultasi_data['email'],
+            'nama_kucing' => $konsultasi_data['namakucing'],
+            'jenis_kucing' => $konsultasi_data['jenis'],
+            'tanggal' => date('Y-m-d H:i:s')
+        ];
+        
+        $this->db->trans_start();
+
+        $konsultasi_id = $this->konsultasi_model->insert_konsultasi($data_konsultasi);
+
+        // Save selected symptoms
+        $this->konsultasi_model->insert_detail_konsultasi($konsultasi_id, $gejala_selected);
+
+        // Save diagnosis outcomes only when at least one disease has a positive CF.
+        if (!empty($diagnosa_results)) {
+            $this->konsultasi_model->insert_hasil_diagnosa($konsultasi_id, $diagnosa_results);
+        }
+
+        $this->db->trans_complete();
+
+        if ($this->db->trans_status() === FALSE) {
+            $this->session->set_flashdata('error', 'Gagal menyimpan hasil konsultasi. Silakan coba lagi.');
+            redirect('konsultasi/gejala');
+            return;
+        }
+
+        $this->session->set_userdata('diagnosa_id', $konsultasi_id);
+        redirect('konsultasi/hasil');
     }
 
     public function hasil()
     {
-        $kode_penyakit = $this->session->userdata('kode_penyakit');
-        $konsultasi_data = $this->session->userdata('konsultasi_data');
-        $gejala_dipilih = $this->session->userdata('gejala_dipilih');
-
-        if (!$kode_penyakit || !$konsultasi_data) {
+        $diagnosa_id = $this->session->userdata('diagnosa_id');
+        if (!$diagnosa_id) {
             redirect('konsultasi');
             return;
         }
 
-        $penyakit = $this->forward_chaining->get_penyakit($kode_penyakit);
-        $gejala_penyakit = $this->forward_chaining->get_gejala_penyakit($kode_penyakit);
-        $persentase = $this->forward_chaining->hitung_persentase($gejala_dipilih, $kode_penyakit);
+        $data['title'] = 'Hasil Diagnosa Kucing';
+        $data['konsultasi'] = $this->konsultasi_model->get_hasil($diagnosa_id);
+        $data['diagnosa'] = $this->konsultasi_model->get_diagnosa_by_konsultasi($diagnosa_id);
+        $data['gejala_terpilih'] = $this->konsultasi_model->get_gejala_by_konsultasi($diagnosa_id);
 
-        $gejala_dipilih_detail = [];
-        foreach ($gejala_dipilih as $id) {
-            $g = $this->db->get_where('gejala', ['id_gejala' => $id])->row();
-            if ($g) $gejala_dipilih_detail[] = $g;
-        }
-
-        $kode_jenis = $this->db->get_where('jenis', ['nama' => $konsultasi_data['jenis']])->row_array();
-        $id_jenis = $kode_jenis ? $kode_jenis['id'] : '';
-
-        $data_db = [
-            'nama_pemilik' => $konsultasi_data['nama'],
-            'email' => $konsultasi_data['email'],
-            'id_jenis_kucing' => $id_jenis,
-            'nama_kucing' => $konsultasi_data['namakucing'],
-            'gejala_dipilih' => json_encode($gejala_dipilih),
-            'hasil_penyakit' => $penyakit['penyakit'],
-            'solusi' => $penyakit['solusi'],
-            'persentase' => $persentase . '%',
-            'created_at' => date('Y-m-d H:i:s')
-        ];
-        $this->konsultasi_model->insert($data_db);
-
-        $data['title'] = 'Hasil Diagnosa';
-        $data['hasil'] = (object) [
-            'nama' => $konsultasi_data['nama'],
-            'email' => $konsultasi_data['email'],
-            'jenis' => $konsultasi_data['jenis'],
-            'namakucing' => $konsultasi_data['namakucing'],
-            'penyakit' => $penyakit['penyakit'],
-            'solusi' => $penyakit['solusi'],
-            'persentase' => $persentase
-        ];
-        $data['gejala_dipilih'] = $gejala_dipilih_detail;
-        $data['gejala_penyakit'] = $gejala_penyakit;
-
+        // Clean up consultation data from session
         $this->session->unset_userdata('konsultasi_data');
-        $this->session->unset_userdata('gejala_dipilih');
-        $this->session->unset_userdata('kode_sekarang');
-        $this->session->unset_userdata('kode_penyakit');
+        $this->session->unset_userdata('diagnosa_id');
 
         $this->load->view('konsultasi/hasil', $data);
     }

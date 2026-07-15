@@ -3,35 +3,41 @@
    Sistem Pakar Diagnosa Penyakit Kucing
    ============================================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
 :root {
-  --ds-primary: #D71F84;
-  --ds-secondary: #6F2282;
-  --ds-accent: #7BBAC1;
-  --ds-success: #27AE60;
-  --ds-warning: #F39C12;
-  --ds-danger: #C0392B;
+  --ds-primary: #F4A261;
+  --ds-secondary: #E9C46A;
+  --ds-accent: #2A9D8F;
+  --ds-success: #2A9D8F;
+  --ds-warning: #E9C46A;
+  --ds-danger: #E76F51;
   --ds-bg: #FFFFFF;
-  --ds-bg-body: #F4F1F8;
-  --ds-border: #C8CDD0;
-  --ds-text: #333333;
-  --ds-text-secondary: #555555;
-  --ds-text-muted: #888888;
-  --ds-font-heading: 'Noto Serif', Georgia, serif;
+  --ds-bg-body: #FFFDF8;
+  --ds-border: #E5E0D8;
+  --ds-text: #264653;
+  --ds-text-secondary: #3D5A6C;
+  --ds-text-muted: #7E93A2;
+  --ds-font-heading: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --ds-font-body: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --ds-radius: 12px;
+  --ds-radius: 16px;
   --ds-radius-sm: 8px;
-  --ds-radius-lg: 16px;
-  --ds-radius-pill: 28.8px;
+  --ds-radius-lg: 20px;
+  --ds-radius-pill: 50px;
   --ds-radius-circle: 50%;
-  --ds-shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
-  --ds-shadow: 0 4px 24px rgba(0,0,0,0.08);
-  --ds-shadow-lg: 0 8px 40px rgba(0,0,0,0.12);
-  --ds-shadow-primary: 0 4px 20px rgba(215,31,132,0.25);
+  --ds-shadow-sm: 0 2px 8px rgba(38,70,83,0.03);
+  --ds-shadow: 0 10px 30px rgba(38,70,83,0.05);
+  --ds-shadow-lg: 0 16px 40px rgba(38,70,83,0.08);
+  --ds-shadow-primary: 0 4px 20px rgba(244,162,97,0.2);
   --ds-sidebar-width: 270px;
   --ds-topbar-height: 64px;
-  --ds-transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+  --ds-transition: all 0.25s ease-in-out;
+}
+
+@media (min-width: 1200px) {
+  .container, .container-lg, .container-md, .container-sm, .container-xl {
+    max-width: 1100px !important;
+  }
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -57,8 +63,8 @@ a:hover { color: var(--ds-secondary); }
   top: 0; left: 0; right: 0; bottom: 0;
   pointer-events: none;
   z-index: 0;
-  opacity: 0.018;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cpath d='M30 42c-2 0-4-3-4-7s2-7 4-7 4 3 4 7-2 7-4 7zm-8-12c-1.5 0-3-2-3-5s1.5-5 3-5 3 2 3 5-1.5 5-3 5zm16 0c-1.5 0-3-2-3-5s1.5-5 3-5 3 2 3 5-1.5 5-3 5zm-12-8c-1.5 0-3-1.5-3-4s1.5-4 3-4 3 1.5 3 4-1.5 4-3 4zm8 0c-1.5 0-3-1.5-3-4s1.5-4 3-4 3 1.5 3 4-1.5 4-3 4z' fill='%23D71F84'/%3E%3C/svg%3E");
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cpath d='M30 42c-2 0-4-3-4-7s2-7 4-7 4 3 4 7-2 7-4 7zm-8-12c-1.5 0-3-2-3-5s1.5-5 3-5 3 2 3 5-1.5 5-3 5zm16 0c-1.5 0-3-2-3-5s1.5-5 3-5 3 2 3 5-1.5 5-3 5zm-12-8c-1.5 0-3-1.5-3-4s1.5-4 3-4 3 1.5 3 4-1.5 4-3 4zm8 0c-1.5 0-3-1.5-3-4s1.5-4 3-4 3 1.5 3 4-1.5 4-3 4z' fill='%23F4A261'/%3E%3C/svg%3E");
   background-size: 120px 120px;
 }
 
@@ -1250,4 +1256,237 @@ a:hover { color: var(--ds-secondary); }
 .ds-cat-illustration {
   opacity: 0.15;
   flex-shrink: 0;
+}
+
+/* ============================================================
+   KUSTOM STYLES REDESIGN KELAS SKRIPSI
+   ============================================================ */
+
+/* 1. Stepper Modern */
+.ds-modern-stepper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  margin-bottom: 2.5rem;
+}
+.ds-modern-stepper::before {
+  content: '';
+  position: absolute;
+  top: 24px;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background-color: #F0EDF6;
+  z-index: 1;
+  border-radius: 2px;
+}
+.ds-modern-stepper-line {
+  position: absolute;
+  top: 24px;
+  left: 0;
+  height: 4px;
+  background-color: var(--ds-primary);
+  z-index: 2;
+  transition: width 0.4s ease;
+  border-radius: 2px;
+}
+.ds-modern-step {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+}
+.ds-modern-step-circle {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: #FFFFFF;
+  border: 4px solid #F0EDF6;
+  color: #A09BB5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1.1rem;
+  transition: var(--ds-transition);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+}
+.ds-modern-step.active .ds-modern-step-circle {
+  border-color: var(--ds-primary);
+  background-color: var(--ds-primary);
+  color: #FFFFFF;
+  box-shadow: 0 4px 12px rgba(244,162,97,0.25);
+}
+.ds-modern-step.completed .ds-modern-step-circle {
+  border-color: var(--ds-success);
+  background-color: var(--ds-success);
+  color: #FFFFFF;
+}
+.ds-modern-step-label {
+  margin-top: 8px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #A09BB5;
+  transition: var(--ds-transition);
+}
+.ds-modern-step.active .ds-modern-step-label {
+  color: var(--ds-text);
+  font-weight: 700;
+}
+.ds-modern-step.completed .ds-modern-step-label {
+  color: var(--ds-success);
+}
+
+/* 2. Checkbox dan Dropdown Besar */
+.ds-checkbox-lg {
+  width: 24px;
+  height: 24px;
+  border: 2px solid var(--ds-border);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: var(--ds-transition);
+}
+.ds-checkbox-lg:checked {
+  background-color: var(--ds-primary);
+  border-color: var(--ds-primary);
+}
+.ds-select-lg {
+  padding: 10px 14px;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  border-radius: 12px;
+  border: 2px solid var(--ds-border);
+  background-color: #FFFFFF;
+  color: var(--ds-text);
+  transition: var(--ds-transition);
+  cursor: pointer;
+}
+.ds-select-lg:focus {
+  border-color: var(--ds-primary);
+  box-shadow: 0 0 0 3px rgba(244, 162, 97, 0.12);
+}
+.ds-select-lg:disabled {
+  background-color: #F8F9FA;
+  cursor: not-allowed;
+  border-color: #E9ECEF;
+}
+
+/* 3. Tooltip & Info Icon */
+.ds-info-btn {
+  background: none;
+  border: none;
+  padding: 2px 4px;
+  color: var(--ds-text-muted);
+  transition: var(--ds-transition);
+  cursor: pointer;
+}
+.ds-info-btn:hover {
+  color: var(--ds-primary);
+}
+
+/* 4. Category Tabs Kucing */
+.ds-category-pills {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+  padding: 4px;
+  background-color: #FFFDF8;
+  border-radius: 16px;
+}
+.ds-category-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--ds-text-secondary);
+  background-color: #FFFFFF;
+  border: 1.5px solid var(--ds-border);
+  border-radius: var(--ds-radius-pill);
+  cursor: pointer;
+  transition: var(--ds-transition);
+}
+.ds-category-pill:hover {
+  background-color: #FFF6E5;
+  border-color: var(--ds-primary);
+  color: var(--ds-primary);
+}
+.ds-category-pill.active {
+  background-color: var(--ds-primary);
+  border-color: var(--ds-primary);
+  color: #FFFFFF;
+  box-shadow: 0 4px 12px rgba(244, 162, 97, 0.2);
+}
+
+/* 5. Sticky Bottom Bar */
+.ds-sticky-bottom-bar {
+  position: sticky;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-top: 1.5px solid var(--ds-border);
+  padding: 16px 24px;
+  z-index: 100;
+  border-radius: 20px 20px 0 0;
+  box-shadow: 0 -8px 24px rgba(38, 70, 83, 0.04);
+}
+
+/* 6. Circular Progress Gauge (Hasil Diagnosa) */
+.ds-progress-circle-container {
+  position: relative;
+  width: 140px;
+  height: 140px;
+  margin: 0 auto;
+}
+.ds-progress-circle-inner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.ds-circle-svg {
+  transform: rotate(-90deg);
+  width: 140px;
+  height: 140px;
+}
+.ds-circle-bg {
+  fill: none;
+  stroke: #F4F0EB;
+  stroke-width: 10;
+}
+.ds-circle-progress-bar {
+  fill: none;
+  stroke: var(--ds-success);
+  stroke-width: 10;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* 7. Hover scale cards & whitespace */
+.ds-card-hover {
+  transition: var(--ds-transition);
+}
+.ds-card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--ds-shadow-lg) !important;
+}
+
+/* 8. Paw loading animation */
+.ds-loading-paw-bounce {
+  animation: dsPawBounceAnim 1s ease-in-out infinite;
+}
+@keyframes dsPawBounceAnim {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
 }

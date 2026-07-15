@@ -3,15 +3,22 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Penyakit extends CI_Controller
 {
+    public function __construct()
+    {
+        parent::__construct();
+        chek_seesion(); // Check if admin is logged in
+        $this->form_validation->set_message('required', '{field} wajib diisi.');
+    }
+
     public function index()
     {
-        $data['title'] = 'Data Penyakit';
+        $data['title'] = 'Data Penyakit & Solusi';
         $data['penyakit'] = $this->penyakit->getPenyakit();
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/topbar');
         $this->load->view('templates/sidebar');
-        $this->load->view('penyakit/index');
+        $this->load->view('penyakit/index', $data);
         $this->load->view('templates/footer');
     }
 
@@ -19,12 +26,11 @@ class Penyakit extends CI_Controller
     {
         $data['title'] = 'Tambah Data Penyakit';
         $data['kode'] = $this->penyakit->getKode();
-        $data['gejala'] = $this->gejala->getGejala();
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/topbar');
         $this->load->view('templates/sidebar');
-        $this->load->view('penyakit/tambah');
+        $this->load->view('penyakit/tambah', $data);
         $this->load->view('templates/footer');
     }
 
@@ -32,43 +38,57 @@ class Penyakit extends CI_Controller
     {
         $data['title'] = 'Ubah Data Penyakit';
         $data['penyakit'] = $this->penyakit->getPenyakitId($id);
-        $data['gejala'] = $this->gejala->getGejala();
+
+        if (!$data['penyakit']) {
+            $this->session->set_flashdata('error', 'Data tidak ditemukan!');
+            redirect('penyakit');
+        }
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/topbar');
         $this->load->view('templates/sidebar');
-        $this->load->view('penyakit/ubah');
+        $this->load->view('penyakit/ubah', $data);
         $this->load->view('templates/footer');
     }
 
     public function insert()
     {
-        $this->form_validation->set_rules('penyakit', 'Nama Penyakit', 'required|trim');
-        $this->form_validation->set_rules('solusi', 'Solusi', 'required|trim');
-        $this->form_validation->set_message('required', '{field} wajib diisi.');
+        $this->form_validation->set_rules('nama_penyakit', 'Nama Penyakit', 'required|trim');
+        $this->form_validation->set_rules('definisi', 'Definisi Penyakit', 'required|trim');
+        $this->form_validation->set_rules('penyebab', 'Penyebab Penyakit', 'required|trim');
+        $this->form_validation->set_rules('pencegahan', 'Pencegahan Penyakit', 'required|trim');
+        $this->form_validation->set_rules('solusi', 'Solusi Penanganan', 'required|trim');
 
         if ($this->form_validation->run() === FALSE) {
             $this->session->set_flashdata('error', 'Gagal menyimpan data. ' . validation_errors());
             redirect('penyakit/tambah');
         } else {
-            $this->penyakit->insert();
-            $this->session->set_flashdata('success', 'Data berhasil disimpan!');
+            if ($this->penyakit->insert()) {
+                $this->session->set_flashdata('success', 'Data penyakit berhasil disimpan!');
+            } else {
+                $this->session->set_flashdata('error', 'Gagal menyimpan data penyakit.');
+            }
             redirect('penyakit');
         }
     }
 
     public function update($id)
     {
-        $this->form_validation->set_rules('penyakit', 'Nama Penyakit', 'required|trim');
-        $this->form_validation->set_rules('solusi', 'Solusi', 'required|trim');
-        $this->form_validation->set_message('required', '{field} wajib diisi.');
+        $this->form_validation->set_rules('nama_penyakit', 'Nama Penyakit', 'required|trim');
+        $this->form_validation->set_rules('definisi', 'Definisi Penyakit', 'required|trim');
+        $this->form_validation->set_rules('penyebab', 'Penyebab Penyakit', 'required|trim');
+        $this->form_validation->set_rules('pencegahan', 'Pencegahan Penyakit', 'required|trim');
+        $this->form_validation->set_rules('solusi', 'Solusi Penanganan', 'required|trim');
 
         if ($this->form_validation->run() === FALSE) {
             $this->session->set_flashdata('error', 'Gagal mengubah data. ' . validation_errors());
             redirect('penyakit/ubah/' . $id);
         } else {
-            $this->penyakit->update($id);
-            $this->session->set_flashdata('success', 'Data berhasil diubah!');
+            if ($this->penyakit->update($id)) {
+                $this->session->set_flashdata('success', 'Data penyakit berhasil diubah!');
+            } else {
+                $this->session->set_flashdata('error', 'Gagal mengubah data penyakit.');
+            }
             redirect('penyakit');
         }
     }
@@ -76,20 +96,7 @@ class Penyakit extends CI_Controller
     public function delete($id)
     {
         $this->penyakit->delete($id);
-        $this->session->set_flashdata('success', 'Data berhasil dihapus!');
+        $this->session->set_flashdata('success', 'Data penyakit berhasil dihapus!');
         redirect('penyakit');
-    }
-
-    public function ubahRelasi()
-    {
-        $gejala_id = $this->input->post('gejalaId');
-        $penyakit_id = $this->input->post('penyakitId');
-        $data = ['penyakit_id' => $penyakit_id, 'gejala_id' => $gejala_id];
-        $result = $this->db->get_where('relasi', $data);
-        if ($result->num_rows() < 1) {
-            $this->db->insert('relasi', $data);
-        } else {
-            $this->db->delete('relasi', $data);
-        }
     }
 }

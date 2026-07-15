@@ -20,9 +20,7 @@ class Auth extends CI_Controller
 
 	public function logout()
 	{
-		$this->session->unset_userdata('username');
-		$this->session->unset_userdata('user_id');
-		$this->session->set_flashdata('success', 'Berhasil keluar!');
+		$this->session->sess_destroy();
 		redirect('auth');
 	}
 }

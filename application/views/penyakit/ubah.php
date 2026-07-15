@@ -16,24 +16,28 @@
             </div>
             <div class="ds-form-group">
                 <label class="ds-label ds-label-required">Nama Penyakit</label>
-                <input type="text" class="ds-input" name="penyakit" value="<?= $penyakit->penyakit ?>" placeholder="Masukkan nama penyakit" required>
+                <input type="text" class="ds-input" name="nama_penyakit" value="<?= htmlspecialchars($penyakit->nama_penyakit) ?>" placeholder="Masukkan nama penyakit" required>
                 <div class="invalid-feedback">Nama penyakit tidak boleh kosong.</div>
             </div>
             <div class="ds-form-group">
-                <label class="ds-label ds-label-required">Solusi</label>
-                <textarea class="ds-textarea" name="solusi" placeholder="Masukkan solusi penanganan" required><?= $penyakit->solusi ?></textarea>
+                <label class="ds-label ds-label-required">Definisi Penyakit</label>
+                <textarea class="ds-textarea" name="definisi" placeholder="Masukkan deskripsi klinis/definisi penyakit" required><?= htmlspecialchars($penyakit->definisi) ?></textarea>
+                <div class="invalid-feedback">Definisi tidak boleh kosong.</div>
+            </div>
+            <div class="ds-form-group">
+                <label class="ds-label ds-label-required">Penyebab Penyakit</label>
+                <textarea class="ds-textarea" name="penyebab" placeholder="Masukkan penyebab patogen/lingkungan penyakit" required><?= htmlspecialchars($penyakit->penyebab) ?></textarea>
+                <div class="invalid-feedback">Penyebab tidak boleh kosong.</div>
+            </div>
+            <div class="ds-form-group">
+                <label class="ds-label ds-label-required">Solusi Penanganan Awal</label>
+                <textarea class="ds-textarea" name="solusi" placeholder="Masukkan solusi penanganan medis/pertolongan pertama" required><?= htmlspecialchars($penyakit->solusi) ?></textarea>
                 <div class="invalid-feedback">Solusi tidak boleh kosong.</div>
             </div>
             <div class="ds-form-group">
-                <label class="ds-label">Relasi Gejala</label>
-                <div class="ds-card-flat" style="max-height:240px;overflow-y:auto;">
-                    <?php foreach ($gejala as $g): ?>
-                    <label class="ds-check">
-                        <input type="checkbox" name="id_gejala[]" value="<?= $g->id_gejala ?>" <?= check_relasi($penyakit->id_penyakit, $g->id_gejala) ?>>
-                        <span><strong><?= $g->kode_gejala ?></strong> — <?= $g->gejala ?></span>
-                    </label>
-                    <?php endforeach; ?>
-                </div>
+                <label class="ds-label ds-label-required">Langkah Pencegahan</label>
+                <textarea class="ds-textarea" name="pencegahan" placeholder="Masukkan langkah-langkah preventif/vaksinasi" required><?= htmlspecialchars($penyakit->pencegahan) ?></textarea>
+                <div class="invalid-feedback">Pencegahan tidak boleh kosong.</div>
             </div>
             <div class="d-flex justify-content-end gap-2">
                 <a href="<?= base_url('penyakit') ?>" class="ds-btn ds-btn-secondary">Batal</a>
@@ -45,3 +49,4 @@
 <script>
 (function(){'use strict';var f=document.querySelectorAll('.needs-validation');Array.prototype.slice.call(f).forEach(function(form){form.addEventListener('submit',function(e){if(!form.checkValidity()){e.preventDefault();e.stopPropagation();}form.classList.add('was-validated');},false);});})();
 </script>
+

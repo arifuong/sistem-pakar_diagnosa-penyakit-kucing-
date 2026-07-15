@@ -3,251 +3,221 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Login — DiagnosaKu</title>
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M6 24c0 0 2-12 6-16 1-1 3-1 3 0 0 3-3 10-1 14 2 5 5 6 10 6s8-1 8-6c0-4-3-11-1-14 1-1 2-1 3 0 4 4 6 16 6 16' fill='%23D71F84'/%3E%3Ccircle cx='12' cy='12' r='2' fill='white'/%3E%3Ccircle cx='20' cy='12' r='2' fill='white'/%3E%3C/svg%3E">
+    <title>Login Admin — DiagnosaKu</title>
+    <!-- Favicon SVG Kucing -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 75c-4 0-8-6-8-14s4-14 8-14 8 6 8 14-4 14-8 14zm-16-22c-3 0-6-4-6-10s3-10 6-10 6 4 6 10-3 10-6 10zm32 0c-3 0-6-4-6-10s3-10 6-10 6 4 6 10-3 10-6 10zm-20-18c-3 0-5-3-5-8s3-8 5-8 5 3 5 8-3 8-5 8zm12 0c-3 0-5-3-5-8s3-8 5-8 5 3 5 8-3 8-5 8z' fill='%23F4A261'/%3E%3C/svg%3E">
+    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="<?= base_url() ?>files/dist/css/design-system.css" rel="stylesheet">
+    
     <style>
-        * { margin:0; padding:0; box-sizing:border-box; }
         body {
-            font-family: 'Poppins', sans-serif;
+            background-color: var(--ds-bg-body);
             min-height: 100vh;
             display: flex;
-            background: linear-gradient(135deg, #D71F84 0%, #6F2282 50%, #1a0a20 100%);
+            align-items: center;
+            justify-content: center;
+            font-family: 'Poppins', sans-serif;
             position: relative;
-            overflow-x: hidden;
         }
-        body::before {
-            content:'';position:absolute;top:0;left:0;right:0;bottom:0;
-            background: radial-gradient(circle at 20% 50%, rgba(255,255,255,0.06) 0%, transparent 50%),
-                        radial-gradient(circle at 80% 20%, rgba(255,255,255,0.04) 0%, transparent 50%);
-            pointer-events:none;
-        }
-        .login-bg-paws {
-            position:fixed;top:0;left:0;right:0;bottom:0;pointer-events:none;opacity:0.03;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 60 60'%3E%3Cpath d='M30 42c-2 0-4-3-4-7s2-7 4-7 4 3 4 7-2 7-4 7zm-8-12c-1.5 0-3-2-3-5s1.5-5 3-5 3 2 3 5-1.5 5-3 5zm16 0c-1.5 0-3-2-3-5s1.5-5 3-5 3 2 3 5-1.5 5-3 5zm-12-8c-1.5 0-3-1.5-3-4s1.5-4 3-4 3 1.5 3 4-1.5 4-3 4zm8 0c-1.5 0-3-1.5-3-4s1.5-4 3-4 3 1.5 3 4-1.5 4-3 4z' fill='%23D71F84'/%3E%3C/svg%3E");
-            background-size:100px 100px;
-        }
-
-        .login-left {
-            flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;
-            padding:40px;position:relative;z-index:1;
-        }
-        .login-left-content {
-            max-width:420px;text-align:center;color:#fff;
-        }
-        .login-left-content h1 {
-            font-family:'Noto Serif',serif;font-size:2rem;font-weight:700;margin-bottom:12px;line-height:1.3;
-        }
-        .login-left-content p {
-            font-size:0.9375rem;color:rgba(255,255,255,0.75);line-height:1.6;margin-bottom:32px;
-        }
-        .login-cat-svg { margin-bottom:24px; }
-
-        .login-right {
-            width:100%;max-width:460px;display:flex;align-items:center;justify-content:center;
-            padding:40px;position:relative;z-index:1;
+        .login-container {
+            width: 100%;
+            max-width: 1000px;
+            margin: 20px;
+            z-index: 10;
         }
         .login-card {
-            background: rgba(255,255,255,0.1);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255,255,255,0.15);
-            border-radius: 20px;
-            padding: 40px 36px;
-            width: 100%;
-            box-shadow: 0 8px 40px rgba(0,0,0,0.2);
+            border: none;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: var(--ds-shadow-lg);
+            background: #ffffff;
         }
-        .login-card-inner {
-            background: rgba(255,255,255,0.95);
-            border-radius: 16px;
-            padding: 36px 32px;
+        .login-brand-side {
+            background-color: var(--ds-dark);
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 48px;
+            position: relative;
         }
-        .login-brand {
-            display:flex;align-items:center;gap:10px;justify-content:center;margin-bottom:24px;
+        .login-brand-side::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cpath d='M30 42c-2 0-4-3-4-7s2-7 4-7 4 3 4 7-2 7-4 7zm-8-12c-1.5 0-3-2-3-5s1.5-5 3-5 3 2 3 5-1.5 5-3 5zm16 0c-1.5 0-3-2-3-5s1.5-5 3-5 3 2 3 5-1.5 5-3 5zm-12-8c-1.5 0-3-1.5-3-4s1.5-4 3-4 3 1.5 3 4-1.5 4-3 4zm8 0c-1.5 0-3-1.5-3-4s1.5-4 3-4 3 1.5 3 4-1.5 4-3 4z' fill='%23F4A261'/%3E%3C/svg%3E");
+            background-size: 100px 100px;
+            opacity: 0.02;
+            pointer-events: none;
         }
-        .login-brand-icon {
-            width:44px;height:44px;background:linear-gradient(135deg,#D71F84,#6F2282);
-            border-radius:12px;display:flex;align-items:center;justify-content:center;
-            color:#fff;font-size:22px;box-shadow:0 4px 12px rgba(215,31,132,0.3);
+        .login-form-side {
+            padding: 48px;
         }
-        .login-brand-text {
-            font-family:'Noto Serif',serif;font-size:1.375rem;font-weight:700;color:#333;
+        .login-brand-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--ds-primary);
+            margin-top: 16px;
         }
-        .login-card-inner h2 {
-            font-family:'Noto Serif',serif;font-size:1.125rem;font-weight:700;color:#333;
-            text-align:center;margin-bottom:4px;
+        .login-brand-desc {
+            font-size: 0.875rem;
+            color: rgba(255,255,255,0.7);
+            max-width: 320px;
+            line-height: 1.6;
+            margin-top: 8px;
         }
-        .login-card-inner .login-sub {
-            font-size:0.8125rem;color:#888;text-align:center;margin-bottom:28px;
+        .form-floating > .form-control:focus ~ label,
+        .form-floating > .form-control:not(:placeholder-shown) ~ label {
+            color: var(--ds-primary) !important;
+            transform: scale(0.85) translateY(-0.5rem) translateX(0.15rem) !important;
         }
-        .form-floating { position:relative; margin-bottom:20px; }
-        .form-floating input {
-            width:100%;height:52px;padding:18px 14px 6px;font-family:'Poppins',sans-serif;
-            font-size:0.875rem;color:#333;background:#fff;border:1.5px solid #e0e0e0;
-            border-radius:10px;outline:none;transition:all 0.2s ease;
+        .form-control:focus {
+            border-color: var(--ds-primary) !important;
+            box-shadow: 0 0 0 0.25rem rgba(244, 162, 97, 0.15) !important;
         }
-        .form-floating input:focus { border-color:#D71F84;box-shadow:0 0 0 3px rgba(215,31,132,0.1); }
-        .form-floating label {
-            position:absolute;top:50%;left:14px;transform:translateY(-50%);
-            font-size:0.875rem;color:#999;pointer-events:none;transition:all 0.2s ease;
-            background:transparent;padding:0 4px;
+        .btn-primary-custom {
+            background-color: var(--ds-primary);
+            border: none;
+            font-weight: 600;
+            padding: 12px;
+            border-radius: 12px;
+            color: white;
+            transition: var(--ds-transition);
         }
-        .form-floating input:focus ~ label,
-        .form-floating input:not(:placeholder-shown) ~ label {
-            top:4px;font-size:0.6875rem;font-weight:600;color:#D71F84;
+        .btn-primary-custom:hover {
+            background-color: #e09251;
+            transform: translateY(-2px);
+            box-shadow: var(--ds-shadow-primary);
         }
-        .form-floating .pw-toggle {
-            position:absolute;right:14px;top:50%;transform:translateY(-50%);
-            background:none;border:none;color:#999;cursor:pointer;padding:4px;font-size:1.125rem;
+        .btn-primary-custom:active {
+            transform: translateY(0);
         }
-        .form-floating .pw-toggle:hover { color:#D71F84; }
-
-        .login-extras {
-            display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;
+        .pw-toggle {
+            position: absolute;
+            right: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            border: none;
+            background: none;
+            color: var(--ds-text-muted);
+            cursor: pointer;
+            z-index: 10;
         }
-        .login-extras .form-check { font-size:0.8125rem;color:#666; }
-        .login-extras .form-check input { accent-color:#D71F84; }
-        .login-extras a { font-size:0.8125rem;color:#D71F84;font-weight:500; }
-        .login-extras a:hover { text-decoration:underline; }
-
-        .btn-login {
-            width:100%;height:48px;font-family:'Poppins',sans-serif;font-size:0.9375rem;
-            font-weight:600;color:#fff;background:linear-gradient(135deg,#D71F84,#6F2282);
-            border:none;border-radius:12px;cursor:pointer;transition:all 0.25s ease;
-            display:flex;align-items:center;justify-content:center;gap:8px;
-            box-shadow:0 4px 16px rgba(215,31,132,0.3);
+        .pw-toggle:hover {
+            color: var(--ds-primary);
         }
-        .btn-login:hover {
-            transform:translateY(-2px);box-shadow:0 6px 24px rgba(215,31,132,0.4);
-            background:linear-gradient(135deg,#c01a76,#5a1a6b);color:#fff;
-        }
-        .btn-login:active { transform:translateY(0); }
-        .btn-login .spinner-border { width:18px;height:18px;border-width:2px;display:none; }
-        .btn-login.loading .spinner-border { display:inline-block; }
-        .btn-login.loading span { display:none; }
-
-        .login-error {
-            background:#fef2f2;border:1px solid #fecaca;border-radius:10px;
-            padding:12px 16px;margin-bottom:20px;font-size:0.8125rem;color:#C0392B;
-            display:flex;align-items:center;gap:8px;
-        }
-
-        .login-footer-left {
-            position:fixed;bottom:24px;left:40px;z-index:1;color:rgba(255,255,255,0.5);
-            font-size:0.75rem;display:flex;align-items:center;gap:8px;
-        }
-        .login-footer-right {
-            position:fixed;bottom:24px;right:40px;z-index:1;color:rgba(255,255,255,0.5);
-            font-size:0.75rem;
-        }
-
-        @media (max-width: 992px) {
-            body { flex-direction:column; }
-            .login-left { display:none; }
-            .login-right { max-width:100%;min-height:100vh; }
-            .login-footer-left, .login-footer-right { display:none; }
-        }
-        @media (max-width: 480px) {
-            .login-card { padding:24px 16px; }
-            .login-card-inner { padding:28px 20px; }
+        @media (max-width: 768px) {
+            .login-brand-side {
+                padding: 32px 20px;
+            }
+            .login-form-side {
+                padding: 32px 24px;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="login-bg-paws"></div>
+    <div class="ds-paw-bg"></div>
 
-    <div class="login-left">
-        <div class="login-left-content">
-            <div class="login-cat-svg">
-                <img src="<?= base_url('assets/images/illustrations/login-cat-doctor.svg') ?>" alt="Dokter Hewan dengan Kucing" style="width:100%;max-width:380px;height:auto;border-radius:16px;">
-            </div>
-            <h1>DiagnosaKu</h1>
-            <p>Sistem Pakar Diagnosa Penyakit Kucing menggunakan metode Forward Chaining. Dilengkapi dengan ilustrasi dokter hewan untuk membantu mendiagnosa kesehatan kucing Anda.</p>
-            <div style="display:flex;gap:24px;justify-content:center;">
-                <div style="text-align:center;">
-                    <div style="font-size:1.75rem;font-weight:700;">20+</div>
-                    <div style="font-size:0.75rem;color:rgba(255,255,255,0.6);">Penyakit</div>
-                </div>
-                <div style="text-align:center;">
-                    <div style="font-size:1.75rem;font-weight:700;">50+</div>
-                    <div style="font-size:0.75rem;color:rgba(255,255,255,0.6);">Gejala</div>
-                </div>
-                <div style="text-align:center;">
-                    <div style="font-size:1.75rem;font-weight:700;">100%</div>
-                    <div style="font-size:0.75rem;color:rgba(255,255,255,0.6);">Akurat</div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="login-right">
+    <div class="container login-container">
         <div class="login-card">
-            <div class="login-card-inner">
-                <div class="login-brand">
-                    <div class="login-brand-icon"><i class="bi bi-paw"></i></div>
-                    <span class="login-brand-text">DiagnosaKu</span>
+            <div class="row g-0">
+                <!-- Brand Side -->
+                <div class="col-md-5 login-brand-side text-center">
+                    <!-- Ilustrasi Kucing Dokter -->
+                    <svg width="150" height="150" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" class="mx-auto">
+                        <!-- Collar & Tag -->
+                        <path d="M40 85 C40 70, 80 70, 80 85 Z" fill="#264653" />
+                        <!-- Head -->
+                        <circle cx="60" cy="55" r="24" fill="#F4A261" />
+                        <!-- Ear Left -->
+                        <path d="M40 40 L50 20 L58 35 Z" fill="#F4A261" />
+                        <path d="M43 38 L50 25 L55 35 Z" fill="#E76F51" />
+                        <!-- Ear Right -->
+                        <path d="M80 40 L70 20 L62 35 Z" fill="#F4A261" />
+                        <path d="M77 38 L70 25 L65 35 Z" fill="#E76F51" />
+                        <!-- Eyes -->
+                        <circle cx="51" cy="50" r="3" fill="#264653" />
+                        <circle cx="69" cy="50" r="3" fill="#264653" />
+                        <!-- Nose/Mouth -->
+                        <path d="M60 55 L58 58 H62 Z" fill="#E76F51" />
+                        <path d="M57 60 C59 62, 60 62, 60 60 C60 62, 61 62, 63 60" stroke="#264653" stroke-width="1.5" stroke-linecap="round" />
+                        <!-- Whiskers -->
+                        <line x1="38" y1="56" x2="25" y2="54" stroke="#E5E0D8" stroke-width="1.5" stroke-linecap="round" />
+                        <line x1="38" y1="60" x2="23" y2="60" stroke="#E5E0D8" stroke-width="1.5" stroke-linecap="round" />
+                        <line x1="82" y1="56" x2="95" y2="54" stroke="#E5E0D8" stroke-width="1.5" stroke-linecap="round" />
+                        <line x1="82" y1="60" x2="97" y2="60" stroke="#E5E0D8" stroke-width="1.5" stroke-linecap="round" />
+                        <!-- Stethoscope collar tag -->
+                        <circle cx="60" cy="74" r="4" fill="#E9C46A" />
+                        <path d="M60 78 V83 M58 83 H62" stroke="#E9C46A" stroke-width="1.5" stroke-linecap="round" />
+                    </svg>
+                    <div class="login-brand-title">DiagnosaKu</div>
+                    <div class="login-brand-desc">Sistem Pakar Diagnosa Penyakit Kucing dengan Certainty Factor (CF).</div>
                 </div>
-                <h2>Masuk ke Akun Anda</h2>
-                <p class="login-sub">Silakan masukkan kredensial untuk mengakses dashboard</p>
-
-                <?php
-                $flashMsg = $this->session->flashdata('error');
-                // Force-clear flashdata to prevent persistence
-                if (isset($_SESSION)) {
-                    foreach (['success','error','warning','info','message'] as $_fk) {
-                        unset($_SESSION[$_fk]);
-                    }
-                    unset($_SESSION['__ci_vars']);
-                }
-                ?>
-                <?php if ($flashMsg): ?>
-                <div class="login-error">
-                    <i class="bi bi-exclamation-circle-fill"></i>
-                    <?= $flashMsg ?>
-                </div>
-                <?php endif; ?>
-
-                <form method="POST" action="<?= base_url('auth/login') ?>" id="loginForm" novalidate>
-                    <div class="form-floating">
-                        <input type="text" class="form-control" id="username" name="username" placeholder="Username" required autocomplete="username">
-                        <label for="username"><i class="bi bi-person me-1"></i> Username</label>
+                
+                <!-- Form Side -->
+                <div class="col-md-7 login-form-side">
+                    <div class="mb-4">
+                        <h2 class="fw-bold text-dark" style="font-size:1.5rem;">Selamat Datang Admin</h2>
+                        <p class="text-muted small">Silakan masuk untuk mengelola sistem pakar.</p>
                     </div>
-                    <div class="form-floating">
-                        <input type="password" class="form-control" id="password" name="password" placeholder="Password" required autocomplete="current-password">
-                        <label for="password"><i class="bi bi-lock me-1"></i> Password</label>
-                        <button type="button" class="pw-toggle" id="togglePw" aria-label="Tampilkan password">
-                            <i class="bi bi-eye" id="pwIcon"></i>
-                        </button>
+
+                    <?php 
+                    $flashMsg = $this->session->flashdata('login_error'); 
+                    ?>
+                    <?php if ($flashMsg): ?>
+                    <div class="alert alert-danger d-flex align-items-center gap-2 py-2 px-3 mb-4" style="border-radius:12px; font-size:0.875rem;">
+                        <i class="bi bi-exclamation-circle-fill"></i>
+                        <span><?= $flashMsg ?></span>
                     </div>
-                    <div class="login-extras">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="remember" name="remember">
-                            <label class="form-check-label" for="remember">Ingat saya</label>
+                    <?php endif; ?>
+
+                    <form method="POST" action="<?= base_url('auth/login') ?>" id="loginForm">
+                        <!-- Username input -->
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="username" name="username" placeholder="Username" required autocomplete="username" style="border-radius:12px;">
+                            <label for="username"><i class="bi bi-person me-1"></i> Username</label>
                         </div>
-                        <a href="#" onclick="Swal.fire({icon:'info',title:'Fitur Dalam Pengembangan',text:'Fitur lupa password akan segera tersedia.',confirmButtonColor:'#D71F84'});return false;">Lupa password?</a>
-                    </div>
-                    <button type="submit" class="btn-login" id="btnLogin">
-                        <div class="spinner-border text-light" role="status"></div>
-                        <span><i class="bi bi-box-arrow-in-right me-1"></i> Masuk</span>
-                    </button>
-                </form>
+                        
+                        <!-- Password input -->
+                        <div class="form-floating mb-4 position-relative">
+                            <input type="password" class="form-control" id="password" name="password" placeholder="Password" required autocomplete="current-password" style="border-radius:12px;">
+                            <label for="password"><i class="bi bi-lock me-1"></i> Password</label>
+                            <button type="button" class="pw-toggle" id="togglePw" aria-label="Tampilkan password">
+                                <i class="bi bi-eye" id="pwIcon"></i>
+                            </button>
+                        </div>
+                        
+                        <!-- Remember me & Forgot password -->
+                        <div class="d-flex justify-content-between align-items-center mb-4" style="font-size:0.875rem;">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="remember" name="remember" style="cursor:pointer; accent-color:var(--ds-primary);">
+                                <label class="form-check-label text-muted" for="remember" style="cursor:pointer;">Ingat saya</label>
+                            </div>
+                            <a href="#" onclick="alert('Silakan hubungi administrator utama untuk reset password Anda.'); return false;" class="text-decoration-none" style="color:var(--ds-primary); font-weight:500;">Lupa password?</a>
+                        </div>
+                        
+                        <!-- Submit Button -->
+                        <button type="submit" class="btn btn-primary-custom w-100 py-3 d-flex align-items-center justify-content-center gap-2" id="btnLogin">
+                            <span class="spinner-border spinner-border-sm text-light d-none" id="btnSpinner" role="status"></span>
+                            <span><i class="bi bi-box-arrow-in-right me-1"></i> Masuk</span>
+                        </button>
+                    </form>
+                </div>
             </div>
         </div>
-    </div>
-
-    <div class="login-footer-left">
-        <i class="bi bi-paw-fill"></i>
-        <span>&copy; <?= date('Y') ?> DiagnosaKu v2.0</span>
-    </div>
-    <div class="login-footer-right">
-        Sistem Pakar Diagnosa Penyakit Kucing
+        
+        <!-- Back to Home -->
+        <div class="text-center mt-4">
+            <a href="<?= base_url() ?>" class="text-decoration-none text-muted small"><i class="bi bi-arrow-left me-1"></i> Kembali ke Halaman Utama</a>
+        </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
     document.addEventListener('DOMContentLoaded', function() {
         var toggle = document.getElementById('togglePw');
@@ -262,7 +232,12 @@
             });
         }
         document.getElementById('loginForm').addEventListener('submit', function() {
-            document.getElementById('btnLogin').classList.add('loading');
+            var btn = document.getElementById('btnLogin');
+            var spinner = document.getElementById('btnSpinner');
+            if (btn && spinner) {
+                btn.disabled = true;
+                spinner.classList.remove('d-none');
+            }
         });
     });
     </script>

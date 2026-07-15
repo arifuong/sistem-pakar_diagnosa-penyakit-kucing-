@@ -2,7 +2,7 @@
     <div id="ds-preloader" class="ds-preloader">
         <div class="ds-paw-spinner">
             <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M50 75c-4 0-8-6-8-14s4-14 8-14 8 6 8 14-4 14-8 14zm-16-22c-3 0-6-4-6-10s3-10 6-10 6 4 6 10-3 10-6 10zm32 0c-3 0-6-4-6-10s3-10 6-10 6 4 6 10-3 10-6 10zm-20-18c-3 0-5-3-5-8s3-8 5-8 5 3 5 8-3 8-5 8zm12 0c-3 0-5-3-5-8s3-8 5-8 5 3 5 8-3 8-5 8z" fill="#D71F84"/>
+                <path d="M50 75c-4 0-8-6-8-14s4-14 8-14 8 6 8 14-4 14-8 14zm-16-22c-3 0-6-4-6-10s3-10 6-10 6 4 6 10-3 10-6 10zm32 0c-3 0-6-4-6-10s3-10 6-10 6 4 6 10-3 10-6 10zm-20-18c-3 0-5-3-5-8s3-8 5-8 5 3 5 8-3 8-5 8zm12 0c-3 0-5-3-5-8s3-8 5-8 5 3 5 8-3 8-5 8z" fill="#F4A261"/>
             </svg>
         </div>
         <div class="ds-preloader-text">Memuat DiagnosaKu...</div>
@@ -59,14 +59,14 @@
                             <i class="bi bi-person-fill"></i>
                         </div>
                         <div class="d-none d-md-block">
-                            <div class="ds-topbar-avatar-name">Admin</div>
-                            <div class="ds-topbar-avatar-role">Administrator</div>
+                            <div class="ds-topbar-avatar-name"><?= $this->session->userdata('nama_lengkap') ?: 'Admin' ?></div>
+                            <div class="ds-topbar-avatar-role"><?= ucfirst($this->session->userdata('role') ?: 'admin') ?></div>
                         </div>
                     </div>
                     <ul class="dropdown-menu dropdown-menu-end" style="border-radius:var(--ds-radius-sm);min-width:200px;box-shadow:var(--ds-shadow-lg);">
                         <li class="px-3 py-2">
-                            <div class="fw-semibold" style="font-size:0.875rem;">Admin</div>
-                            <div style="font-size:0.75rem;color:var(--ds-text-muted);">admin@diagnosaku.id</div>
+                            <div class="fw-semibold" style="font-size:0.875rem;"><?= $this->session->userdata('nama_lengkap') ?: 'Admin' ?></div>
+                            <div style="font-size:0.75rem;color:var(--ds-text-muted);">@<?= $this->session->userdata('username') ?: 'admin' ?></div>
                         </li>
                         <li><hr class="dropdown-divider"></li>
                         <li><a class="dropdown-item" href="<?= base_url('admin') ?>"><i class="bi bi-grid-1x2 me-2"></i>Dashboard</a></li>

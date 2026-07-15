@@ -14,7 +14,7 @@
                 <div class="col-md-6">
                     <div class="ds-form-group">
                         <label class="ds-label">ID Jenis</label>
-                        <input type="text" class="ds-input" value="<?= $id ?>" readonly>
+                        <input type="text" name="id" class="ds-input" value="<?= $id ?>" readonly>
                     </div>
                 </div>
                 <div class="col-md-6">

@@ -1,97 +1,63 @@
 <?php
+defined('BASEPATH') or exit('No direct script access allowed');
 
 class Rule_model extends CI_Model
 {
-    public function getKode()
-    {
-        $this->db->select_max('kode', 'kode');
-        $query = $this->db->get('penyakit')->row();
-        $data = $query->kode;
-        $noUrut = (int) substr($data, 1, 2);
-        $noUrut++;
-        return 'G' . sprintf('%02s', $noUrut);
-    }
-
     public function getAllRule()
     {
-        $this->db->select('*');
+        $this->db->select('rule.*, gejala.kode_gejala, gejala.nama_gejala, penyakit.kode_penyakit, penyakit.nama_penyakit');
         $this->db->from('rule');
         $this->db->join('gejala', 'gejala.id_gejala = rule.gejala_id');
+        $this->db->join('penyakit', 'penyakit.id_penyakit = rule.penyakit_id');
+        $this->db->order_by('penyakit.kode_penyakit', 'ASC');
+        $this->db->order_by('gejala.kode_gejala', 'ASC');
         return $this->db->get()->result();
     }
 
     public function getAllRuleId($id)
     {
-        $this->db->select('*');
+        $this->db->select('rule.*, gejala.kode_gejala, gejala.nama_gejala, penyakit.kode_penyakit, penyakit.nama_penyakit');
         $this->db->from('rule');
-        $this->db->join('gejala', 'gejala.id_gejala = rule.gejala_id', 'left');
-        $this->db->join('penyakit', 'penyakit.id_penyakit = rule.penyakit_id', 'left');
-        $this->db->where('id', $id);
+        $this->db->join('gejala', 'gejala.id_gejala = rule.gejala_id');
+        $this->db->join('penyakit', 'penyakit.id_penyakit = rule.penyakit_id');
+        $this->db->where('rule.id_rule', $id);
         return $this->db->get()->row();
-    }
-
-    public function getRule()
-    {
-        return $this->db->get('rule')->result();
-    }
-
-    public function getDataParent($kode_parent)
-    {
-        if ($kode_parent == NULL) {
-            return 'Pilih Gejala';
-        }
-        $data = $this->db->get_where('gejala', array('kode_gejala' => $kode_parent))->row();
-        return $data->kode_gejala . ' - ' . $data->gejala;
-    }
-
-    public function getDataYa($kode_ya)
-    {
-        if ($kode_ya == NULL) {
-            return 'Pilih Gejala';
-        }
-        $data = $this->db->get_where('gejala', array('kode_gejala' => $kode_ya))->row();
-        return $data->kode_gejala . ' - ' . $data->gejala;
-    }
-
-    public function getDataTidak($kode_tidak)
-    {
-        if ($kode_tidak == NULL) {
-            return 'Pilih Gejala';
-        }
-        $data = $this->db->get_where('gejala', array('kode_gejala' => $kode_tidak))->row();
-        return $data->kode_gejala . ' - ' . $data->gejala;
     }
 
     public function insert()
     {
-        $gejala_parent = $this->input->post('gejala_parent') !== "" ? $this->input->post('gejala_parent') : null;
-        $gejala_ya = $this->input->post('gejala_ya') !== "" ? $this->input->post('gejala_ya') : null;
-        $gejala_tidak = $this->input->post('gejala_tidak') !== "" ? $this->input->post('gejala_tidak') : null;
+        $mb = floatval($this->input->post('mb'));
+        $md = floatval($this->input->post('md'));
+        $cf_pakar = $mb - $md;
 
-        $this->db->insert('rule', [
-            'gejala_id' => $this->input->post('gejala_id'),
-            'parent' => $gejala_parent,
-            'ya' => $gejala_ya,
-            'tidak' => $gejala_tidak
-        ]);
+        $data = [
+            'penyakit_id' => $this->input->post('penyakit_id', TRUE),
+            'gejala_id' => $this->input->post('gejala_id', TRUE),
+            'mb' => $mb,
+            'md' => $md,
+            'cf_pakar' => $cf_pakar
+        ];
+        return $this->db->insert('rule', $data);
     }
 
     public function update($id)
     {
-        $gejala_parent = $this->input->post('gejala_parent') !== "" ? $this->input->post('gejala_parent') : null;
-        $gejala_ya = $this->input->post('gejala_ya') !== "" ? $this->input->post('gejala_ya') : null;
-        $gejala_tidak = $this->input->post('gejala_tidak') !== "" ? $this->input->post('gejala_tidak') : null;
+        $mb = floatval($this->input->post('mb'));
+        $md = floatval($this->input->post('md'));
+        $cf_pakar = $mb - $md;
 
-        $this->db->update('rule', [
-            'gejala_id' => $this->input->post('gejala_id'),
-            'parent' => $gejala_parent,
-            'ya' => $gejala_ya,
-            'tidak' => $gejala_tidak
-        ], ['id' => $id]);
+        $data = [
+            'penyakit_id' => $this->input->post('penyakit_id', TRUE),
+            'gejala_id' => $this->input->post('gejala_id', TRUE),
+            'mb' => $mb,
+            'md' => $md,
+            'cf_pakar' => $cf_pakar
+        ];
+        return $this->db->update('rule', $data, ['id_rule' => $id]);
     }
 
     public function delete($id)
     {
-        $this->db->delete('rule', ['id' => $id]);
+        return $this->db->delete('rule', ['id_rule' => $id]);
     }
 }

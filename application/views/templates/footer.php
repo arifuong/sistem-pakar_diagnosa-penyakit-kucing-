@@ -36,16 +36,16 @@
                         label: 'Jumlah Diagnosa',
                         data: <?= json_encode($chart_values) ?>,
                         backgroundColor: [
-                            'rgba(215,31,132,0.75)',
-                            'rgba(111,34,130,0.75)',
-                            'rgba(39,174,96,0.75)',
-                            'rgba(243,156,18,0.75)',
-                            'rgba(123,186,193,0.75)',
-                            'rgba(162,198,58,0.75)',
-                            'rgba(243,149,74,0.75)',
-                            'rgba(192,57,43,0.75)'
+                            'rgba(244, 162, 97, 0.75)',  // Primary Orange
+                            'rgba(233, 196, 106, 0.75)', // Secondary Yellow
+                            'rgba(42, 157, 143, 0.75)',  // Accent Teal
+                            'rgba(38, 70, 83, 0.75)',    // Dark Charcoal
+                            'rgba(231, 111, 81, 0.75)',   // Danger Coral
+                            'rgba(244, 211, 185, 0.75)',
+                            'rgba(224, 122, 95, 0.75)',
+                            'rgba(246, 188, 143, 0.75)'
                         ],
-                        borderColor: ['#D71F84','#6F2282','#27AE60','#F39C12','#7BBAC1','#A2C63A','#F3954A','#C0392B'],
+                        borderColor: ['#F4A261','#E9C46A','#2A9D8F','#264653','#E76F51','#F4D3B9','#E07A5F','#F6BC8F'],
                         borderWidth: 1.5,
                         borderRadius: 6
                     }]
@@ -55,7 +55,7 @@
                     maintainAspectRatio: false,
                     plugins: {
                         legend: { display: false },
-                        tooltip: { backgroundColor: '#333', titleFont: { family: "'Poppins'" }, bodyFont: { family: "'Poppins'" }, cornerRadius: 8, padding: 12 }
+                        tooltip: { backgroundColor: '#264653', titleFont: { family: "'Poppins'" }, bodyFont: { family: "'Poppins'" }, cornerRadius: 8, padding: 12 }
                     },
                     scales: {
                         y: { beginAtZero: true, ticks: { stepSize: 1, font: { family: "'Poppins'", size: 12 } }, grid: { color: 'rgba(0,0,0,0.04)' } },
@@ -76,14 +76,14 @@
                     datasets: [{
                         data: <?= json_encode($pie_values) ?>,
                         backgroundColor: [
-                            'rgba(215,31,132,0.8)',
-                            'rgba(111,34,130,0.8)',
-                            'rgba(39,174,96,0.8)',
-                            'rgba(243,156,18,0.8)',
-                            'rgba(123,186,193,0.8)',
-                            'rgba(162,198,58,0.8)',
-                            'rgba(243,149,74,0.8)',
-                            'rgba(192,57,43,0.8)'
+                            '#F4A261', // Primary
+                            '#E9C46A', // Secondary
+                            '#2A9D8F', // Accent
+                            '#264653', // Dark
+                            '#E76F51', // Danger
+                            '#F4D3B9',
+                            '#E07A5F',
+                            '#F6BC8F'
                         ],
                         borderWidth: 2,
                         borderColor: '#fff'
@@ -147,20 +147,13 @@
         $flash_error   = $this->session->flashdata('error');
         $flash_warning = $this->session->flashdata('warning');
         $flash_info    = $this->session->flashdata('info');
-        // Force-clear flashdata from session to prevent persistence bugs
-        $this->session->unset_userdata('__ci_vars');
-        if (isset($_SESSION)) {
-            foreach (['success','error','warning','info','message'] as $_fk) {
-                unset($_SESSION[$_fk]);
-            }
-        }
         ?>
         <?php if ($flash_success): ?>
         Swal.fire({
             icon: 'success',
             title: 'Berhasil!',
             text: <?= json_encode($flash_success) ?>,
-            confirmButtonColor: '#D71F84',
+            confirmButtonColor: '#F4A261',
             timer: 3000,
             timerProgressBar: true,
             customClass: { popup: 'ds-swal' }
@@ -171,7 +164,7 @@
             icon: 'error',
             title: 'Gagal!',
             text: <?= json_encode($flash_error) ?>,
-            confirmButtonColor: '#D71F84',
+            confirmButtonColor: '#E76F51',
             customClass: { popup: 'ds-swal' }
         });
         <?php endif; ?>
@@ -180,7 +173,7 @@
             icon: 'warning',
             title: 'Peringatan!',
             text: <?= json_encode($flash_warning) ?>,
-            confirmButtonColor: '#D71F84',
+            confirmButtonColor: '#F4A261',
             customClass: { popup: 'ds-swal' }
         });
         <?php endif; ?>
@@ -189,7 +182,7 @@
             icon: 'info',
             title: 'Informasi',
             text: <?= json_encode($flash_info) ?>,
-            confirmButtonColor: '#D71F84',
+            confirmButtonColor: '#2A9D8F',
             customClass: { popup: 'ds-swal' }
         });
         <?php endif; ?>
@@ -205,7 +198,7 @@
                 text: 'Data yang dihapus tidak dapat dikembalikan!',
                 icon: 'warning',
                 showCancelButton: true,
-                confirmButtonColor: '#D71F84',
+                confirmButtonColor: '#E76F51',
                 cancelButtonColor: '#6c757d',
                 confirmButtonText: 'Ya, Hapus!',
                 cancelButtonText: 'Batal',
