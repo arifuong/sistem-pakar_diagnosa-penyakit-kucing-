@@ -167,13 +167,28 @@
                     </div>
 
                     <?php 
-                    $flashMsg = $this->session->flashdata('login_error'); 
+                    $login_error = $this->session->flashdata('login_error'); 
+                    if ($login_error):
+                        // Force consumption NOW
+                        unset($_SESSION['login_error'], $_SESSION['__ci_vars']['login_error']);
+                        if (empty($_SESSION['__ci_vars'])) unset($_SESSION['__ci_vars']);
+
+                        $lid = md5($login_error . uniqid('', true));
                     ?>
-                    <?php if ($flashMsg): ?>
-                    <div class="alert alert-danger d-flex align-items-center gap-2 py-2 px-3 mb-4" style="border-radius:12px; font-size:0.875rem;">
+                    <div class="alert alert-danger d-flex align-items-center gap-2 py-2 px-3 mb-4" style="border-radius:12px; font-size:0.875rem;" id="la_<?= $lid ?>">
                         <i class="bi bi-exclamation-circle-fill"></i>
-                        <span><?= $flashMsg ?></span>
+                        <span><?= $login_error ?></span>
                     </div>
+                    <script>
+                    (function() {
+                        if (!sessionStorage.getItem('sn_<?= $lid ?>')) {
+                            sessionStorage.setItem('sn_<?= $lid ?>', '1');
+                        } else {
+                            var el = document.getElementById('la_<?= $lid ?>');
+                            if (el) el.style.display = 'none';
+                        }
+                    })();
+                    </script>
                     <?php endif; ?>
 
                     <form method="POST" action="<?= base_url('auth/login') ?>" id="loginForm">

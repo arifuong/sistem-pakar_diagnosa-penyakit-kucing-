@@ -141,50 +141,76 @@
             }
         } catch(e) {}
 
-        /* Flash messages via SweetAlert2 — read flashdata once per key into variables */
+        /* Flash messages via SweetAlert2 — with double-layer guard */
         <?php
         $flash_success = $this->session->flashdata('success');
         $flash_error   = $this->session->flashdata('error');
         $flash_warning = $this->session->flashdata('warning');
         $flash_info    = $this->session->flashdata('info');
+
+        // ===== CRITICAL FIX: Force flashdata consumption NOW =====
+        // CI3's flashdata() does NOT mark data as consumed on read.
+        // Deletion only happens on the NEXT request's _ci_init_vars().
+        // If session_write_close() fails during redirect() exit
+        // (common on Windows/Laragon), flashdata persists across requests.
+        // We explicitly unset from $_SESSION to guarantee one-time display.
+        foreach (['success', 'error', 'warning', 'info'] as $k) {
+            if (isset($_SESSION['__ci_vars'][$k]) || isset($_SESSION[$k])) {
+                unset($_SESSION[$k], $_SESSION['__ci_vars'][$k]);
+            }
+        }
+        if (empty($_SESSION['__ci_vars'])) {
+            unset($_SESSION['__ci_vars']);
+        }
+        // ========================================================
+
+        // Unique notification ID used by sessionStorage guard below
+        $notif_id = md5(implode('|', array_filter([$flash_success, $flash_error, $flash_warning, $flash_info])) . uniqid('', true));
         ?>
-        <?php if ($flash_success): ?>
-        Swal.fire({
-            icon: 'success',
-            title: 'Berhasil!',
-            text: <?= json_encode($flash_success) ?>,
-            confirmButtonColor: '#F4A261',
-            timer: 3000,
-            timerProgressBar: true,
-            customClass: { popup: 'ds-swal' }
-        });
-        <?php endif; ?>
-        <?php if ($flash_error): ?>
-        Swal.fire({
-            icon: 'error',
-            title: 'Gagal!',
-            text: <?= json_encode($flash_error) ?>,
-            confirmButtonColor: '#E76F51',
-            customClass: { popup: 'ds-swal' }
-        });
-        <?php endif; ?>
-        <?php if ($flash_warning): ?>
-        Swal.fire({
-            icon: 'warning',
-            title: 'Peringatan!',
-            text: <?= json_encode($flash_warning) ?>,
-            confirmButtonColor: '#F4A261',
-            customClass: { popup: 'ds-swal' }
-        });
-        <?php endif; ?>
-        <?php if ($flash_info): ?>
-        Swal.fire({
-            icon: 'info',
-            title: 'Informasi',
-            text: <?= json_encode($flash_info) ?>,
-            confirmButtonColor: '#2A9D8F',
-            customClass: { popup: 'ds-swal' }
-        });
+        <?php if ($flash_success || $flash_error || $flash_warning || $flash_info): ?>
+        (function() {
+            if (!sessionStorage.getItem('sn_<?= $notif_id ?>')) {
+                sessionStorage.setItem('sn_<?= $notif_id ?>', '1');
+                <?php if ($flash_success): ?>
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Berhasil!',
+                    text: <?= json_encode($flash_success) ?>,
+                    confirmButtonColor: '#F4A261',
+                    timer: 3000,
+                    timerProgressBar: true,
+                    customClass: { popup: 'ds-swal' }
+                });
+                <?php endif; ?>
+                <?php if ($flash_error): ?>
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Gagal!',
+                    text: <?= json_encode($flash_error) ?>,
+                    confirmButtonColor: '#E76F51',
+                    customClass: { popup: 'ds-swal' }
+                });
+                <?php endif; ?>
+                <?php if ($flash_warning): ?>
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Peringatan!',
+                    text: <?= json_encode($flash_warning) ?>,
+                    confirmButtonColor: '#F4A261',
+                    customClass: { popup: 'ds-swal' }
+                });
+                <?php endif; ?>
+                <?php if ($flash_info): ?>
+                Swal.fire({
+                    icon: 'info',
+                    title: 'Informasi',
+                    text: <?= json_encode($flash_info) ?>,
+                    confirmButtonColor: '#2A9D8F',
+                    customClass: { popup: 'ds-swal' }
+                });
+                <?php endif; ?>
+            }
+        })();
         <?php endif; ?>
     });
 

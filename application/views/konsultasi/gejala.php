@@ -149,11 +149,29 @@ function get_symptom_categories($code) {
                 <p class="text-muted small">Centang tanda-tanda sakit yang terlihat secara fisik pada kucing dan pilih tingkat keyakinan Anda.</p>
             </div>
 
-            <?php if ($this->session->flashdata('error')): ?>
-            <div class="alert alert-danger px-3 py-2 d-flex align-items-center gap-2 mb-4" style="border-radius:12px; font-size:0.875rem;">
+            <?php
+            $gejala_error = $this->session->flashdata('error');
+            if ($gejala_error):
+                // Force consumption NOW
+                unset($_SESSION['error'], $_SESSION['__ci_vars']['error']);
+                if (empty($_SESSION['__ci_vars'])) unset($_SESSION['__ci_vars']);
+
+                $gid = md5($gejala_error . uniqid('', true));
+            ?>
+            <div class="alert alert-danger px-3 py-2 d-flex align-items-center gap-2 mb-4" style="border-radius:12px; font-size:0.875rem;" id="fa_<?= $gid ?>">
                 <i class="bi bi-exclamation-triangle-fill"></i>
-                <span><?= $this->session->flashdata('error') ?></span>
+                <span><?= $gejala_error ?></span>
             </div>
+            <script>
+            (function() {
+                if (!sessionStorage.getItem('sn_<?= $gid ?>')) {
+                    sessionStorage.setItem('sn_<?= $gid ?>', '1');
+                } else {
+                    var el = document.getElementById('fa_<?= $gid ?>');
+                    if (el) el.style.display = 'none';
+                }
+            })();
+            </script>
             <?php endif; ?>
 
             <form id="formDiagnosa" method="POST" action="<?= base_url('konsultasi/proses') ?>">
