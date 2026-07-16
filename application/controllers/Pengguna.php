@@ -19,7 +19,6 @@ class Pengguna extends CI_Controller
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/topbar');
-        $this->load->view('templates/sidebar');
         $this->load->view('pengguna/index', $data);
         $this->load->view('templates/footer');
     }
@@ -30,7 +29,6 @@ class Pengguna extends CI_Controller
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/topbar');
-        $this->load->view('templates/sidebar');
         $this->load->view('pengguna/tambah', $data);
         $this->load->view('templates/footer');
     }
@@ -47,7 +45,6 @@ class Pengguna extends CI_Controller
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/topbar');
-        $this->load->view('templates/sidebar');
         $this->load->view('pengguna/ubah', $data);
         $this->load->view('templates/footer');
     }

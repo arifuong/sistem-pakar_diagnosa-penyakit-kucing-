@@ -17,7 +17,6 @@ class Penyakit extends CI_Controller
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/topbar');
-        $this->load->view('templates/sidebar');
         $this->load->view('penyakit/index', $data);
         $this->load->view('templates/footer');
     }
@@ -29,7 +28,6 @@ class Penyakit extends CI_Controller
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/topbar');
-        $this->load->view('templates/sidebar');
         $this->load->view('penyakit/tambah', $data);
         $this->load->view('templates/footer');
     }
@@ -46,7 +44,6 @@ class Penyakit extends CI_Controller
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/topbar');
-        $this->load->view('templates/sidebar');
         $this->load->view('penyakit/ubah', $data);
         $this->load->view('templates/footer');
     }

@@ -17,7 +17,6 @@ class Rule extends CI_Controller
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/topbar');
-        $this->load->view('templates/sidebar');
         $this->load->view('rule/index', $data);
         $this->load->view('templates/footer');
     }
@@ -30,7 +29,6 @@ class Rule extends CI_Controller
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/topbar');
-        $this->load->view('templates/sidebar');
         $this->load->view('rule/tambah', $data);
         $this->load->view('templates/footer');
     }
@@ -49,7 +47,6 @@ class Rule extends CI_Controller
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/topbar');
-        $this->load->view('templates/sidebar');
         $this->load->view('rule/ubah', $data);
         $this->load->view('templates/footer');
     }

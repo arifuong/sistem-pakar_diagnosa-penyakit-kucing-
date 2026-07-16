@@ -17,7 +17,6 @@ class Kucing extends CI_Controller
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/topbar');
-        $this->load->view('templates/sidebar');
         $this->load->view('kucing/index', $data);
         $this->load->view('templates/footer');
     }
@@ -29,7 +28,6 @@ class Kucing extends CI_Controller
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/topbar');
-        $this->load->view('templates/sidebar');
         $this->load->view('kucing/tambah_jenis', $data);
         $this->load->view('templates/footer');
     }

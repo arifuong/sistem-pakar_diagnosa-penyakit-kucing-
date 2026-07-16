@@ -16,7 +16,6 @@ class Hasil extends CI_Controller
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/topbar');
-        $this->load->view('templates/sidebar');
         $this->load->view('hasil/index', $data);
         $this->load->view('templates/footer');
     }
@@ -35,7 +34,6 @@ class Hasil extends CI_Controller
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/topbar');
-        $this->load->view('templates/sidebar');
         $this->load->view('hasil/detail', $data);
         $this->load->view('templates/footer');
     }
